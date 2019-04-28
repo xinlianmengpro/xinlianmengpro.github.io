@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="iOS 开发 公司合伙人 | 李露鑫，iOS & Photography Lover，Software Engineer，Entrepreneur | 这里是 一之笔 @Yizibbi 李露鑫 的个人博客， 生活需要仪式感，💪。">
+    <meta name="keywords"  content="李露鑫, Yizibi,yizibi,一之笔的博客,一之笔,一支笔, iOS, 公司合伙人, @yizibi, @yizibi的博客, 博客, 个人网站, 互联网">
+    <meta name="theme-color" content="#000000">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="超详细图文免费搭建VPS,VPN配置 - 一之笔的博客 | Yizibi Blog">
+    
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="文章首发整理个人博客,转载参考注明来源一之笔;
+
+">
+    
+    <meta property="article:published_time" content="2018-10-24T06:32:24Z">
+    
+    
+    <meta property="article:author" content="一之笔">
+    
+    
+    <meta property="article:tag" content="VPS">
+    
+    <meta property="article:tag" content="工具">
+    
+    
+    <meta property="og:image" content="http://localhost:4000/img/avatar-hux-ny.jpg">
+    <meta property="og:url" content="http://localhost:4000/2018/10/24/%E8%B6%85%E8%AF%A6%E7%BB%86%E5%9B%BE%E6%96%87%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BAVPS,VPN%E9%85%8D%E7%BD%AE/">
+    <meta property="og:site_name" content="一之笔的博客 | Yizibi Blog">
+    
+    <title>超详细图文免费搭建VPS,VPN配置 - 一之笔的博客 | Yizibi Blog</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/2018/10/24/%E8%B6%85%E8%AF%A6%E7%BB%86%E5%9B%BE%E6%96%87%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BAVPS,VPN%E9%85%8D%E7%BD%AE/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<script type="text/javascript" color="238,205,205" opacity='0.7' zIndex="-2" count="99" src="../../../../js/canvas-nest.min.js"></script>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">一之笔</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/archive/">Archive</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/portfolio/">Portfolio</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    var __HuxNav__ = {
+        close: function(){
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        },
+        open: function(){
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+
+    // Bind Event
+    $toggle.addEventListener('click', function(e){
+        if ($navbar.className.indexOf('in') > 0) {
+            __HuxNav__.close()
+        }else{
+            __HuxNav__.open()
+        }
+    })
+
+    /**
+     * Since Fastclick is used to delegate 'touchstart' globally
+     * to hack 300ms delay in iOS by performing a fake 'click',
+     * Using 'e.stopPropagation' to stop 'touchstart' event from 
+     * $toggle/$collapse will break global delegation.
+     * 
+     * Instead, we use a 'e.target' filter to prevent handler
+     * added to document close HuxNav.  
+     *
+     * Also, we use 'click' instead of 'touchstart' as compromise
+     */
+    document.addEventListener('click', function(e){
+        if(e.target == $toggle) return;
+        if(e.target.className == 'icon-bar') return;
+        __HuxNav__.close();
+    })
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/post-bg-awsvps.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<!-- canvas-nest.min.js -->
+<!--<script type="text/javascript" src="../../../../js/canvas-nest.min.js"></script>-->
+<head>
+    <link href="../../../../css/rouge.css" rel="stylesheet">
+</head>
+<script type="text/javascript" color="238,205,205" opacity='0.7' zIndex="-2" count="99" src="../../../../js/canvas-nest.min.js"></script>
+<!--//添加评论系统-->
+<link rel="stylesheet" href="../../../../css/gitalk.css">
+    <script src="../../../../js/gitalk.min.js"></script>
+<!--    打赏-->
+<link href="/css/reward.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/post-bg-awsvps.jpg')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#VPS" title="VPS">VPS</a>
+                        
+                        <a class="tag" href="/tags/#工具" title="工具">工具</a>
+                        
+                    </div>
+                    <h1>超详细图文免费搭建VPS,VPN配置</h1>
+                    
+                    
+                    <h2 class="subheading">自己搭个梯子科学上网</h2>
+                    
+                    <span class="meta">Posted by 一之笔 on October 24, 2018</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <!-- Multi-Lingual -->
+                
+
+
+				<p>文章首发整理个人博客,转载参考注明来源<a href="https://yizibi.github.io/">一之笔</a>;</p>
+
+<h3 id="前言">前言</h3>
+
+<p>现在,科学上网变得越来越重要了,面对国内搜索引擎的商业化,你要搜个东西,往往给你的不是你想要的结果;这时候,好的搜索引擎就很重要了;Google,因为政策原因,被和谐了,因此,想要科学的上网,怎么办?自己买个梯子,不划算,要知道,因为买了梯子,客服联系不上人的多得是,而且比较贵,并且不可靠;自己动手,丰衣足食,这篇文章旨在记录自己在搭建VPS的过程以及遇到的问题;</p>
+
+<p><img src="http://yizhibi.6chemical.com/1540357595.png?imageMogr2/thumbnail/!70p" alt="" /></p>
+
+<h3 id="相关概念">相关概念</h3>
+
+<ul>
+  <li>VPS,虚拟专用服务器（Virtual private server，缩写为 VPS），是将一台服务器分割成多个虚拟专享服务器的服务。实现VPS的技术分为容器技术和虚拟化技术。简单理解VPS就是一台拥有公网IP的服务器。</li>
+  <li>VPN,虚拟私人网络（Virtual Private Network，缩写为VPN）是一种常用于连接中、大型企业或团体与团体间的私人网络的通讯方法。</li>
+  <li>SS,Shadowsocks，一种安全的socks5代理;</li>
+</ul>
+
+<h3 id="vps的选择">VPS的选择</h3>
+
+<h4 id="搬瓦工-vs-亚马逊云aws">搬瓦工 VS 亚马逊云(AWS)</h4>
+
+<p>什么是AWS？Amazon Web Services,就是亚马逊云服务;</p>
+
+<p>之前写过一篇文章<a href="https://yizibi.github.io/2016/07/25/Mac%E7%A7%91%E5%AD%A6%E6%90%AD%E5%BB%BAVPN,%E7%BB%BF%E8%89%B2%E4%B8%8A%E7%BD%91/">Mac科学搭建VPN,绿色上网</a>,其中的VPS就是搬瓦工提供的,一年最低大概19美元,如果有优惠券的话,可能就16美元,我大概用了快2年,现在还在用,自己用的话,基本没什么问题;但是,我用了另外的亚马逊云提供的EC2服务,搭建好了,测试了一下,突然就得,搬瓦工延迟太大了,跟AWS不是一个数量级;</p>
+
+<p>最上面两个都是AWS的服务,最下面是搬瓦工的服务,对比立马就知道,差距太大了;</p>
+
+<p><img src="http://yizhibi.6chemical.com/yizhibi_aws_vpsyanchi.jpg?imageMogr2/thumbnail/!70p" alt="" /></p>
+
+<h4 id="aws-免费试用条件">AWS 免费试用条件</h4>
+
+<p>需要注册信息,并绑定一张<code class="highlighter-rouge">信用卡</code>,需要扣费认证,这个认证的钱会退给你的;</p>
+
+<h4 id="ec2套餐信息">EC2套餐信息</h4>
+
+<p>EC2套餐,每个月750h,1G的内存,30G SSD,自己用够用了;</p>
+
+<p>具体的套餐,你可以去<a href="https://aws.amazon.com/cn/free/?awsf.Free%20Tier%20Types=categories%23featured">官网看看</a>;</p>
+
+<h3 id="账号注册">账号注册</h3>
+<p>到<a href="https://aws.amazon.com/cn/">AWS</a>进行注册,如下:
+<img src="http://yizhibi.6chemical.com/1540351426.png?imageMogr2/thumbnail/!70p" alt="" />
+注册过程中需要绑定信用卡，会扣$1(预授权)。但需要注意的是，在没有用超的情况下，是免费的,后面可以通过设置超额提醒;另外,在注册的过程中,他们会打电话确认,听到那边说话几秒,反正说的是英语,你就输入屏幕提示的数字即可,官网验证成功;
+<img src="http://yizhibi.6chemical.com/1540351510.png?imageMogr2/thumbnail/!70p" alt="" />
+一步一步按照提示走,就会注册成功;</p>
+
+<h3 id="创建aws实例">创建AWS实例</h3>
+
+<p>进入官网,可以找到下面这个这个免费套餐;</p>
+
+<p><img src="http://yizhibi.6chemical.com/1540351116.png?imageMogr2/thumbnail/!70p" alt="" /></p>
+
+<p>点进去,就能看到这个套餐的具体信息了;</p>
+
+<p>大概1到2h就能开通成功了;</p>
+
+<h3 id="启动虚拟机">启动虚拟机</h3>
+
+<p>登录进去,就能看到如下的服务了</p>
+
+<p><img src="http://yizhibi.6chemical.com/1540351883.png?imageMogr2/thumbnail/!70p" alt="" /></p>
+
+<p>点击启动虚拟机,开始选择虚拟机类型,包括一些配置信息,总共有以下七个步骤:</p>
+
+<blockquote>
+  <p>选择AMI-&gt;选择实例类型-&gt;配置实例-&gt;添加存储-&gt;添加标签-&gt;配置安全组-&gt;审核启动</p>
+</blockquote>
+
+<h4 id="选择ami">选择AMI</h4>
+<p>选择Amazon 系统映像(AMI),我自己通过实践选择的是Ubuntu 
+<img src="http://yizhibi.6chemical.com/1540353655.png?imageMogr2/thumbnail/!70p" alt="" /></p>
+
+<h4 id="选择实例类型">选择实例类型</h4>
+
+<p><img src="http://yizhibi.6chemical.com/1540353916.png?imageMogr2/thumbnail/!70p" alt="" /></p>
+
+<h4 id="配置实例">配置实例</h4>
+<p>默认配置即可,下一步;</p>
+<h4 id="添加存储">添加存储</h4>
+<p>默认配置即可,下一步;</p>
+<h4 id="添加标签">添加标签</h4>
+
+<p><img src="http://yizhibi.6chemical.com/1540354040.png?imageMogr2/thumbnail/!70p" alt="" /></p>
+
+<h4 id="配置安全组">配置安全组</h4>
+
+<h5 id="设置端口流量">设置端口流量</h5>
+<p><code class="highlighter-rouge">注意</code>:这一步很重要,如果搞错了,SSH客户端或者终端远程登录会连接不上;,这里先设置<code class="highlighter-rouge">所有流量</code>和<code class="highlighter-rouge">端口</code>开放;</p>
+
+<p><img src="http://yizhibi.6chemical.com/1540354232.png" alt="" /></p>
+
+<h5 id="生成秘钥对">生成秘钥对</h5>
+
+<p>这个文件是,后缀为 <code class="highlighter-rouge">name.pem</code> 形式的文件,可以用这个文件登录服务器;
+秘钥对的名称一般是,账户名,注意是账户名,不要搞成登录名或者邮箱了;</p>
+
+<p><img src="http://yizhibi.6chemical.com/1540354417.png" alt="" /></p>
+
+<p>点击启动实例,设置账单通知</p>
+
+<h5 id="账单提醒功能重要">账单提醒功能(重要)</h5>
+
+<ul>
+  <li>启动状态</li>
+</ul>
+
+<p><img src="http://yizhibi.6chemical.com/1540354543.png" alt="" /></p>
+
+<ul>
+  <li>首选项</li>
+</ul>
+
+<p><img src="http://yizhibi.6chemical.com/1540354562.png" alt="" /></p>
+
+<p>保存首选项;</p>
+
+<h4 id="审核">审核</h4>
+<p>最后一步就是审核,审核之前配置的所有功能,确定没问题,启动;</p>
+
+<h3 id="登录服务器">登录服务器</h3>
+
+<p>定制完成后，就可以远程登录了。在实例上右击，点击连接。</p>
+
+<p><img src="http://yizhibi.6chemical.com/1540354787.png?imageMogr2/thumbnail/!70p" alt="" /></p>
+
+<p>点击连接,会弹出一个框,具体的信息框,如下:</p>
+
+<p><img src="http://yizhibi.6chemical.com/1540354896.png?imageMogr2/thumbnail/!70p" alt="" /></p>
+
+<p>cd 到 秘钥文件也就是 <code class="highlighter-rouge">name.pem</code>文件夹,然后输入以下命令,获得读写权限;</p>
+
+<pre><code class="language-Shell">chmod 400 name.pem
+</code></pre>
+<p>然后复制,上图的示例,点击回车,就会进去;</p>
+
+<h4 id="登录权限问题">登录权限问题</h4>
+
+<p>注意,你没有获得 <code class="highlighter-rouge">pem</code>秘钥对的读写权限,就会报错,如下:</p>
+
+<p><img src="http://yizhibi.6chemical.com/1540355418.png?imageMogr2/thumbnail/!70p" alt="" /></p>
+
+<p>成功登录服务器,终端会显示如下:</p>
+
+<p><img src="http://yizhibi.6chemical.com/1540355479.png?imageMogr2/thumbnail/!70p" alt="" /></p>
+
+<h3 id="服务端安装shadowsocks">服务端安装Shadowsocks</h3>
+
+<p>依次在终端输入以下命令:</p>
+
+<pre><code class="language-Shell"># 获取root权限
+sudo -s
+# 更新apt-get
+apt-get update
+# 安装python包管理工具
+apt-get install python-setuptools
+apt-get install python-pip
+# 安装shadowsocks
+pip install shadowsocks
+</code></pre>
+<p><code class="highlighter-rouge">注意</code>:获取root权限后,光标前面的美元符号会变成#,并且最前面的账户就是<code class="highlighter-rouge">Root</code>就是下面这个样子:</p>
+
+<p><img src="http://yizhibi.6chemical.com/1540355825.png?imageMogr2/thumbnail/!70p" alt="" /></p>
+
+<h3 id="服务端配置shadowsocks">服务端配置Shadowsocks</h3>
+
+<ul>
+  <li>查看SSServer位置</li>
+</ul>
+
+<pre><code class="language-Shell">which ssserver
+</code></pre>
+<p>会得到这个</p>
+<pre><code class="language-Shell">/usr/local/bin/ssserver
+</code></pre>
+<h4 id="创建配置文件">创建配置文件</h4>
+
+<pre><code class="language-Shell">mkdir /etc/shadowsocks
+vim /etc/shadowsocks/ss.json
+</code></pre>
+
+<h4 id="配置文件内容">配置文件内容</h4>
+
+<pre><code class="language-Shell">{
+"server":"0.0.0.0",
+"server_port":443, //ss连接服务器的端口
+"local_address":"127.0.0.1",
+"local_port":1080,
+"password":"111111", // 设置ss连接时的密码
+"timeout":300,
+"method":"aes-256-cfb",//加密方法,还有好多,这里默认这个
+"fast_open":false,
+"workers": 1
+}
+</code></pre>
+
+<ul>
+  <li>
+    <p>加密方法:默认<code class="highlighter-rouge">aes-256-cfb</code>,<a href="https://github.com/shadowsocks/shadowsocks/wiki/Encryption">更多参考</a>;</p>
+  </li>
+  <li>
+    <p>workers:允许使用的人数,仅仅支持Unix,<a href="https://github.com/shadowsocks/shadowsocks/wiki/Workers">workers</a></p>
+  </li>
+</ul>
+
+<h3 id="服务端启动shadowsocks">服务端启动Shadowsocks</h3>
+
+<ul>
+  <li>启动：
+    <pre><code class="language-Shell">sudo /usr/local/bin/ssserver -c /etc/shadowsocks/ss.json -d start
+</code></pre>
+  </li>
+  <li>停止：
+    <pre><code class="language-Shell">sudo /usr/local/bin/ssserver -c /etc/shadowsocks/ss.json -d stop 
+</code></pre>
+  </li>
+  <li>重启：
+    <pre><code class="language-Shell">sudo /usr/local/bin/ssserver -c /etc/shadowsocks/ss.json -d restart
+</code></pre>
+  </li>
+  <li>设置开机启动</li>
+</ul>
+
+<pre><code class="language-Shell">sudo vi /etc/rc.local
+</code></pre>
+<p>在<code class="highlighter-rouge">rc.local</code>文件末尾添加以下代码:</p>
+
+<pre><code class="language-Shell">sudo /usr/local/bin/ssserver 
+-c /etc/shadowsocks/ss.json -d start
+</code></pre>
+<h3 id="配置服务端遇到的问题">配置服务端遇到的问题</h3>
+
+<ul>
+  <li>Shadowsocks无法启动,报错</li>
+</ul>
+
+<pre><code class="language-Python">AttributeError: /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1: undefined symbol: EVP_CIPHER_CTX_cleanup
+</code></pre>
+<p>主要是内置的python中的openssl文件的cleanup函数过期,需要修改;</p>
+
+<h4 id="解决办法">解决办法</h4>
+<h4 id="打开openssl文件">打开openssl文件</h4>
+<p>用vim打开文件：((以下路径可以根据自己的系统情况自行修改))
+<code class="highlighter-rouge">vim /usr/local/lib/python2.7/dist-packages/shadowsocks/crypto/openssl.py </code></p>
+<h4 id="搜索关键字并修改">搜索关键字并修改</h4>
+<p>直接搜索关键字:<code class="highlighter-rouge">EVP_CIPHER_CTX_cleanup</code>,一共有2处;</p>
+
+<p>进入编辑模式将
+<code class="highlighter-rouge">libcrypto.EVP_CIPHER_CTX_cleanup.argtypes = (c_void_p,) </code></p>
+
+<p>改为
+<code class="highlighter-rouge">libcrypto.EVP_CIPHER_CTX_reset.argtypes = (c_void_p,)</code></p>
+
+<p>其实就是把 <code class="highlighter-rouge">cleanup</code> 改为<code class="highlighter-rouge">reset</code>,就可以了;
+保存并退出,重新启动就行;
+完美解决;</p>
+
+<p>然后,重新启动SS,就成功了;
+至此,服务端基本就设置完了;</p>
+
+<h3 id="电脑配置">电脑配置</h3>
+
+<p>在<a href="https://shadowsocks.org/en/download/clients.html">shadowsocks</a>下载最新版本;就是一个绿色小飞机;</p>
+
+<p><img src="http://yizhibi.6chemical.com/1540357101.png?imageMogr2/thumbnail/!70p" alt="" /></p>
+
+<p>下载后,打开,然后配置账户和服务信息</p>
+
+<p><img src="http://yizhibi.6chemical.com/1540357372.png" alt="" /></p>
+
+<p>密码就是刚才在服务器设置<code class="highlighter-rouge">ss.json</code>中的密码,包括加密方式;不要填错了;</p>
+
+<p>配置完成后,启动客户端,访问goole,就可以了;</p>
+
+<p>基本是秒开google;</p>
+
+<h3 id="手机配置">手机配置</h3>
+
+<p>国内的APP Store VPN配置APP基本都下线了,建议某宝购买一个国外的appleID,下载一下这个哥们;</p>
+
+<p><img src="http://yizhibi.6chemical.com/potatsoVPN.png" alt="" /></p>
+
+<p>配置基本跟电脑差不多,如下:</p>
+
+<p><img src="http://yizhibi.6chemical.com/lucyBlog/google/WechatIMG48.jpeg" alt="手机配置" /></p>
+
+<p>也可以通过扫描电脑SS配置的二维码直接保存;</p>
+
+<h3 id="最后防止aws到期或者意外扣费">最后防止AWS到期或者意外扣费</h3>
+
+<p>这个<a href="https://www.zhihu.com/question/22543732">知友</a>遇到信用卡被口几千刀,我们得注意一下,到期或者收到账单劲爆及时登录控制台查看信息;</p>
+
+
+                <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a></div>
+                <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["weixin","qzone","tsina","tqq","twi","fbook"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["weixin","qzone","tsina","tqq","twi","fbook"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+                <hr style="visibility: hidden;">
+
+            <!-- 打赏功能 -->
+            <div>
+                <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+                <div>☛兄dei，请我喝杯茶☚</div>
+                <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+                    <span>打赏</span>
+                </button>
+                <div id="QR" style="display: none;">
+                        
+                        
+                <div id="wechat" style="display: inline-block">
+                <img id="wechat_qr" src="/img/payimg/weipayimg.jpg" alt="yizibi 微信支付"/>
+                            <p>微信支付</p>
+                </div>
+                        
+                        
+                        
+                <div id="alipay" style="display: inline-block">
+                <img id="alipay_qr" src="/img/payimg/alipayimg.jpg" alt="yizibi 支付宝"/>
+                <p>支付宝</p>
+                </div>
+                        
+                        
+                        
+                        
+                </div>
+                </div>
+                
+            </div>
+            
+
+   <!--  上一篇或者下一篇post按钮 -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2018/10/18/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%B7%BB%E5%8A%A0%E7%82%B9%E5%87%BB%E7%88%B1%E5%BF%83%E6%95%88%E6%9E%9C/" data-toggle="tooltip" data-placement="top" title="个人博客中添加点击爱心效果">
+                        Previous<br>
+                        <span>个人博客中添加点击爱心效果</span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+
+
+<!--                -->
+
+                
+                
+                <!--   gitalk       -->
+                
+            </div>  
+
+    <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+                				<a href="/tags/#iOS技术" title="iOS技术" rel="13">
+                                    iOS技术
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#iOS问题" title="iOS问题" rel="2">
+                                    iOS问题
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#VPS" title="VPS" rel="2">
+                                    VPS
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#工具" title="工具" rel="6">
+                                    工具
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#生活" title="生活" rel="3">
+                                    生活
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#Linux" title="Linux" rel="2">
+                                    Linux
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#博客" title="博客" rel="3">
+                                    博客
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#随笔" title="随笔" rel="2">
+                                    随笔
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#摄影" title="摄影" rel="2">
+                                    摄影
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#旅行" title="旅行" rel="2">
+                                    旅行
+                                </a>
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="https://blog.searchinfogo.com">Junhua's Blog</a></li>
+                    
+                        <li><a href="http://ilongge.cn/">卟败灬筱龙</a></li>
+                    
+                        <li><a href="http://tombraiderjf.com/">Lara Croft</a></li>
+                    
+                        <li><a href="http://srsyrzz.ml/">耀日庄主的博客</a></li>
+                    
+                        <li><a href="https://leohope.com/">Hope</a></li>
+                    
+                        <li><a href="https://www.chairyfish.com/">五斤</a></li>
+                    
+                        <li><a href="https://asdfv1929.github.io/">asdfv1929</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+    
+
+    
+</article>
+
+
+<!-- Add support for Mathjax by Voleking-->
+
+
+
+
+<section class="post-comments">
+    
+    <div id="disqus_thread"></div>
+    <script>
+        
+        var disqus_config = function () {
+            this.page.url = "http://localhost:4000/2018/10/24/%E8%B6%85%E8%AF%A6%E7%BB%86%E5%9B%BE%E6%96%87%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BAVPS,VPN%E9%85%8D%E7%BD%AE/";
+            this.page.identifier = "/2018/10/24/%E8%B6%85%E8%AF%A6%E7%BB%86%E5%9B%BE%E6%96%87%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BAVPS,VPN%E9%85%8D%E7%BD%AE/";
+        };
+    
+    var disqus_shortname = 'yizibi';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+     var d = document, s = d.createElement('script');
+     s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+     s.setAttribute('data-timestamp', +new Date());
+     (d.head || d.body).appendChild(s);
+     })();
+        </script>
+    <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
+    
+    
+    
+    
+    
+</section>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<!--
+Author: Ray-Eldath
+refer to:
+ - https://github.com/theme-next/hexo-theme-next/blob/master/source/js/src/utils.js
+ - https://jingyan.baidu.com/article/b2c186c83ec846c46ef6ff80.html
+ - http://www.bkjia.com/jQuery/449205.html
+-->
+<style media="screen">
+  .scroll {
+    z-index: 10000;
+    display: none;
+    height: 24px;
+    background: #222;
+    color: #fff;
+    line-height: 24px;
+    text-align: center;
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+</style>
+<div class="scroll">
+  <i class="fa fa-arrow-up" style="margin-left: 4px"></i>
+  <span class="scrollpercent" style="margin-left: -2px"></span>
+  <span style="margin-left: -4px; margin-right: 4px">%</span>
+</div>
+
+<script src="/js/util.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    if (utils.isMobile()) {
+      $('.scroll').hide();
+      return;
+    }
+    $(window).scroll(function() {
+      let scrollValue = $(window).scrollTop();
+      var scrollPercentRounded = Math.round((scrollValue / utils.getContentVisibilityHeight()) * 100);
+      var scrollPercentMaxed = (scrollPercentRounded > 100) ? 100 : scrollPercentRounded;
+      $('.scrollpercent').html(scrollPercentMaxed);
+      scrollValue > 100 ? $('.scroll').fadeIn() : $('.scroll').fadeOut();
+    });
+    $('.scroll').click(function() {
+      $('html, body').animate({
+        scrollTop: 0
+      }, 300);
+    })
+  })
+</script>
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://twitter.com/yizibi">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/li-lin-fei">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a target="_blank" href="http://weibo.com/2524618644">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+
+                    
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/yizibbi">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/yizibi">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/露鑫-李-525b58111">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">
+<!--                  本站总访问量<span id="busuanzi_value_site_pv"></span>次，本站访客数<span id="busuanzi_value_site_uv"></span>人次，本文总阅读量<span id="busuanzi_value_page_pv"></span>次-->
+                    <span class="site-uv" title="总点击人数">
+                    <img src="/img/vendor/octicons/svg/person.svg" width="10" height="16">
+                    <span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
+                    <span class="site-pv" title="总点击量">
+                    <img src="/img/vendor/octicons/svg/eye.svg" width="16" height="16">
+                    <span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
+                    <span class="page-pv"title="本页面点击人数">
+                    <img src="/img/vendor/octicons/svg/file-text.svg" width="12" height="16">
+                    <span class="busuanzi-value" id="busuanzi_value_page_pv"></span></span>
+                    <br>
+                    Copyright &copy; 一之笔 2018
+                    <br>
+                    Theme by <a href="https://github.com/Huxpro/huxpro.github.io">Hux</a> | 本站源码 <a href="https://github.com/yizibi/yizibi.github.io">yizibi</a>
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=yizibi&repo=yizibi.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+            
+        </div>
+    </div>
+</footer>
+<!--网站统计-->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+<!-- Service Worker -->
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async('/js/jquery.tagcloud.js',function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-124793396-1';
+    var _gaDomain = 'auto';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog (selector) {
+
+        // interop with multilangual 
+        if ('' == 'true') {
+            _containerSelector = 'div.post-container.active'
+        } else {
+            _containerSelector = 'div.post-container'
+        }
+
+        // init
+        var P = $(_containerSelector),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        // clean
+        $(selector).html('')
+
+        // appending
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+<!-- Multi-Lingual -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+<script src="/js/jquery.min.js"></script>
+<style>
+.videoWrapper {
+	position: relative;
+	padding-bottom: 56.333%;
+	height: 0;
+    background: black;
+}
+.videoWrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+    border: 0;
+}    
+</style>
+
+<script>
+function get_youtube_id(url) {
+    var p = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+    return (url.match(p)) ? RegExp.$1 : false;
+}
+function vimeo_embed(url,el) {
+    var id = false;
+    $.ajax({
+      url: 'https://vimeo.com/api/oembed.json?url='+url,
+      async: true,
+      success: function(response) {
+        if(response.video_id) {
+          id = response.video_id;
+          if(url.indexOf('autoplay=1') !== -1) var autoplay=1; else var autoplay=0;
+          if(url.indexOf('loop=1') !== -1) var loop=1; else var loop=0;
+          var theInnerHTML = '<div class="videoWrapper"><iframe src="https://player.vimeo.com/video/'+id+'/?byline=0&title=0&portrait=0';
+          if(autoplay==1) theInnerHTML += '&autoplay=1';
+          if(loop==1) theInnerHTML += '&loop=1';
+          theInnerHTML += '" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>'; 
+          el.innerHTML = theInnerHTML;
+        }
+      }
+    });
+}
+function video_embed() {
+    var p = document.getElementsByTagName('p');
+    for(var i = 0; i < p.length; i++) {
+        //check if this is an external url (that starts with https:// or http://
+        if (p[i].innerHTML.indexOf("http://") == 0 ||
+            p[i].innerHTML.indexOf("https://") == 0) {
+            var youtube_id = get_youtube_id(p[i].innerHTML);
+            if(youtube_id) {
+                if(p[i].innerHTML.indexOf('autoplay=1') !== -1) var autoplay=1; else var autoplay=0;
+                if(p[i].innerHTML.indexOf('loop=1') !== -1) var loop=1; else var loop=0;
+                var theInnerHTML = '<div class="videoWrapper"><iframe width="720" height="420" src="https://www.youtube.com/embed/' + youtube_id + '?rel=0&showinfo=0';
+                if(autoplay==1) theInnerHTML += '&autoplay=1';
+                if(loop==1) theInnerHTML += '&loop=1&playlist='+youtube_id+'&version=3';
+                theInnerHTML += '" frameborder="0" allowfullscreen></iframe></div>';
+                p[i].innerHTML = theInnerHTML;
+            }
+            if(p[i].innerHTML.indexOf('vimeo.com') !== -1) {
+                //ask vimeo for the id and place the embed
+                vimeo_embed(p[i].innerHTML,p[i]);
+            }
+        }
+    }
+}
+video_embed();
+
+function mp3_embed() {
+    var p = document.getElementsByTagName('p');
+    for(var i = 0; i < p.length; i++) {
+        if(p[i].innerHTML.indexOf('.mp3') !== -1) {
+            var str = p[i].innerHTML.split('?');
+            if(str.length == 1) str[1] = '';
+            var str1 = str[1];
+            str1 = str1.replace('&','').replace('&','');
+            str1 = str1.replace('autoplay=1','').replace('autoplay=0','');
+            str1 = str1.replace('loop=1','').replace('loop=0','');
+            str1 = str1.replace('controls=0','').replace('controls=1','');
+
+            if (str[0].lastIndexOf('.mp3', str[0].length - 4) === str[0].length - 4 && str1.length == 0) {
+                if(str[1].indexOf('autoplay=1') !== -1) var autoplay=1; else var autoplay=0;
+                if(str[1].indexOf('loop=1') !== -1) var loop=1; else var loop=0;
+                if(str[1].indexOf('controls=0') !== -1) var controls=0; else var controls=1;
+                var newInnerHTML = '<audio';
+                if(autoplay==1) newInnerHTML += ' autoplay';
+                if(loop==1) newInnerHTML += ' loop';
+                if(controls==1) newInnerHTML += ' controls';
+                newInnerHTML += '><source src="'+str[0]+'" type="audio/mpeg">Your browser does not support the audio element.</audio>';
+                p[i].innerHTML = newInnerHTML;
+            }
+        }
+    }
+}
+mp3_embed();
+</script>
+
+<!--鼠标点击爱心动画-->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+</body>
+
+</html>

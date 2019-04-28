@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="iOS 开发 公司合伙人 | 李露鑫，iOS & Photography Lover，Software Engineer，Entrepreneur | 这里是 一之笔 @Yizibbi 李露鑫 的个人博客， 生活需要仪式感，💪。">
+    <meta name="keywords"  content="李露鑫, Yizibi,yizibi,一之笔的博客,一之笔,一支笔, iOS, 公司合伙人, @yizibi, @yizibi的博客, 博客, 个人网站, 互联网">
+    <meta name="theme-color" content="#000000">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="写完代码去旅行 - 一之笔的博客 | Yizibi Blog">
+    
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="
+
+
+
+">
+    
+    <meta property="article:published_time" content="2018-10-10T14:32:24Z">
+    
+    
+    <meta property="article:author" content="一之笔">
+    
+    
+    <meta property="article:tag" content="生活">
+    
+    <meta property="article:tag" content="随笔">
+    
+    <meta property="article:tag" content="摄影">
+    
+    <meta property="article:tag" content="旅行">
+    
+    
+    <meta property="og:image" content="http://localhost:4000/img/avatar-hux-ny.jpg">
+    <meta property="og:url" content="http://localhost:4000/2018/10/10/%E5%86%99%E5%AE%8C%E4%BB%A3%E7%A0%81%E5%8E%BB%E6%97%85%E8%A1%8Cmarkdown/">
+    <meta property="og:site_name" content="一之笔的博客 | Yizibi Blog">
+    
+    <title>写完代码去旅行 - 一之笔的博客 | Yizibi Blog</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/2018/10/10/%E5%86%99%E5%AE%8C%E4%BB%A3%E7%A0%81%E5%8E%BB%E6%97%85%E8%A1%8Cmarkdown/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<script type="text/javascript" color="238,205,205" opacity='0.7' zIndex="-2" count="99" src="../../../../js/canvas-nest.min.js"></script>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">一之笔</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/archive/">Archive</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/portfolio/">Portfolio</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    var __HuxNav__ = {
+        close: function(){
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        },
+        open: function(){
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+
+    // Bind Event
+    $toggle.addEventListener('click', function(e){
+        if ($navbar.className.indexOf('in') > 0) {
+            __HuxNav__.close()
+        }else{
+            __HuxNav__.open()
+        }
+    })
+
+    /**
+     * Since Fastclick is used to delegate 'touchstart' globally
+     * to hack 300ms delay in iOS by performing a fake 'click',
+     * Using 'e.stopPropagation' to stop 'touchstart' event from 
+     * $toggle/$collapse will break global delegation.
+     * 
+     * Instead, we use a 'e.target' filter to prevent handler
+     * added to document close HuxNav.  
+     *
+     * Also, we use 'click' instead of 'touchstart' as compromise
+     */
+    document.addEventListener('click', function(e){
+        if(e.target == $toggle) return;
+        if(e.target.className == 'icon-bar') return;
+        __HuxNav__.close();
+    })
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/post-bg-sunrise.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<!-- canvas-nest.min.js -->
+<!--<script type="text/javascript" src="../../../../js/canvas-nest.min.js"></script>-->
+<head>
+    <link href="../../../../css/rouge.css" rel="stylesheet">
+</head>
+<script type="text/javascript" color="238,205,205" opacity='0.7' zIndex="-2" count="99" src="../../../../js/canvas-nest.min.js"></script>
+<!--//添加评论系统-->
+<link rel="stylesheet" href="../../../../css/gitalk.css">
+    <script src="../../../../js/gitalk.min.js"></script>
+<!--    打赏-->
+<link href="/css/reward.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/post-bg-sunrise.jpg')
+    }
+
+    
+    header.intro-header .header-mask{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background: rgba(0,0,0, 0.3);
+    }
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#生活" title="生活">生活</a>
+                        
+                        <a class="tag" href="/tags/#随笔" title="随笔">随笔</a>
+                        
+                        <a class="tag" href="/tags/#摄影" title="摄影">摄影</a>
+                        
+                        <a class="tag" href="/tags/#旅行" title="旅行">旅行</a>
+                        
+                    </div>
+                    <h1>写完代码去旅行</h1>
+                    
+                    
+                    <h2 class="subheading">说走咱就走,破罐子破摔,活在当下,向前看</h2>
+                    
+                    <span class="meta">Posted by 一之笔 on October 10, 2018</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <!-- Multi-Lingual -->
+                
+
+
+				<!--<video src="http://o9zpq25pv.bkt.clouddn.com/videoResource/%E9%81%93%E7%94%9F%E5%8C%96%E5%B7%A5_%E6%88%90%E7%89%8702.mp4" width="320" height="240" controls="controls">-->
+<!--Your browser does not support the video tag.-->
+<!--</video>-->
+
+<p>文章原创如需转载，请注明出处”本文首发于<a href="https://yizibi.github.io/">一之笔</a>”;</p>
+
+<blockquote>
+  <p>我是一名IT开发,主要做iOS开发,工作期间,除了上厕所,开会,可能一坐就是一个上午,或者一个下午;之前办了健身卡,自从换了一个地方住,就没去过了;人,就是懒,总是给自己找各种理由;怎么办呢,我也很绝望?那就趁着国庆,出去转转,走走心!</p>
+</blockquote>
+
+<blockquote>
+  <p>西安人的歌 走起来</p>
+</blockquote>
+
+<p>http://o9zpq25pv.bkt.clouddn.com/lucyBlog/xianrendege.mp3</p>
+
+<h2 id="18年的走心">18年的走心</h2>
+
+<ul>
+  <li>“清明节”, 恩,去了”西塘”;</li>
+  <li>“端午节”, 好像是去了 “周庄”;杭州去周庄,真是一番波折;</li>
+  <li>再下来就是,国庆节,去了西安;</li>
+</ul>
+
+<blockquote>
+  <p>江南烟雨西北苍茫</p>
+</blockquote>
+
+<p>总体感觉,可能真是沿海,长三角呆的时间久了,去了一趟西安,感觉,好干燥,嘴唇干裂,还是长三角适合养人,其实,相对而言,也就是,有水的地方,比较养人吧;</p>
+
+<p>一句话,总结就是:江南的烟雨楼台,西北的苍茫山河;</p>
+
+<h2 id="行程安排">行程安排</h2>
+
+<p><code class="highlighter-rouge">tips:最好提前一个月或者两周订酒店,订机票或者火车票</code></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>时间</th>
+      <th>行程</th>
+      <th>住宿</th>
+      <th>备注</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>9.30-10.1</td>
+      <td>杭州萧山-西咸机场</td>
+      <td>来喜酒店</td>
+      <td>性价比高 138¥</td>
+    </tr>
+    <tr>
+      <td>10.1-10.2</td>
+      <td>西安 - 华山</td>
+      <td>华山玉泉院旁边</td>
+      <td>那是个坑,待会说</td>
+    </tr>
+    <tr>
+      <td>10.2-10.3</td>
+      <td>华山 - 合阳</td>
+      <td>大荔县城</td>
+      <td>华山没有直达我家的车</td>
+    </tr>
+    <tr>
+      <td>10.3-10.4</td>
+      <td>大荔 - 合阳</td>
+      <td>我的家</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>10.4-10.6</td>
+      <td>合阳 - 西安</td>
+      <td>车站旁边的宾馆</td>
+      <td>一晚400+,太贵了</td>
+    </tr>
+    <tr>
+      <td>10.6-10.7</td>
+      <td>西咸机场 - 杭州萧山</td>
+      <td>杭州租房</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>10.7</td>
+      <td>休息一天</td>
+      <td>开始上班</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="装备">装备</h2>
+
+<ul>
+  <li>尼康D7200单反;</li>
+  <li>挂机镜头 35mm F1.8定焦镜头,携带18-135mm,变焦镜头;</li>
+  <li>外套必带;</li>
+  <li>登山杖,手套(可选)</li>
+</ul>
+
+<blockquote>
+  <p>无后期不摄影</p>
+</blockquote>
+
+<p>摄影有句话,叫,无后期不摄影,但是,咱时间宝贵,都是随便拍拍,感觉到了,就行了,以下多图,慎入;</p>
+
+<h2 id="自古华山一条道">自古华山一条道</h2>
+
+<blockquote>
+  <p>五岳归来不看山,黄山归来不看岳</p>
+</blockquote>
+
+<p>去年元旦,去了一趟黄山,还在黄山泡了一次温泉,今年看了下,黄山国庆真是人堵人;可是,我是元旦去的,本想着,看运气,有没有 <code class="highlighter-rouge">云海</code> 被我撞见,虽然,天气很冷,但是,晴天,连 <code class="highlighter-rouge">雾凇 </code>的美景也没看到;而且赶上,黄山西海大峡谷封闭,去的地方也不多,黄山的四绝:<code class="highlighter-rouge">奇松</code>、<code class="highlighter-rouge">怪石</code>、<code class="highlighter-rouge">云海</code>、<code class="highlighter-rouge">温泉</code>；除了云海没有看到,其他都可以领略到,以后有机会,还得再去一次;</p>
+
+<p>华山就不一样了,华山重在一个字–<code class="highlighter-rouge">险</code>; 有在悬崖峭壁搭建的路,只容许一个人通过的 <code class="highlighter-rouge">长空栈道</code>,还有几乎90°垂直,需要两手抓住铁链,脚在山崖上那个开凿的脚窝里才能走的<code class="highlighter-rouge">鹞子翻身</code>;这两个地方,属于单向往返,人还特别多,我没体验成;本来是想去体验一下的;有机会,还是避开法定节假日;</p>
+
+<h3 id="华山初探">华山初探</h3>
+
+<blockquote>
+  <p>一方水土养一方人</p>
+</blockquote>
+
+<p>一方水土养一方人,靠山吃山,靠水吃水;一点也不假;</p>
+
+<p>一个有蓝田玉的县城,养活了一个蓝田县,那句熟悉的诗句:”<code class="highlighter-rouge">蓝田日暖玉生烟</code>”;</p>
+
+<h4 id="华山门票">华山门票</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>门票</th>
+      <th>价格/¥</th>
+      <th>备注</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>大门票</td>
+      <td>160</td>
+      <td>学生证便宜</td>
+    </tr>
+    <tr>
+      <td>西峰索道</td>
+      <td>140</td>
+      <td>索道运行时间久,大概20min+</td>
+    </tr>
+    <tr>
+      <td>西线单程</td>
+      <td>40</td>
+      <td>索道下来不是在玉泉院,需要乘车去</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="华山线路">华山线路</h4>
+
+<blockquote>
+  <p>如果体力不行,建议,索道,考虑到成本,时间,采用北上西下,或者西上北下都是不错的;</p>
+</blockquote>
+
+<ul>
+  <li>爬上爬下,也称徒步上山,从华山门走,也就是地图的中间线路;</li>
+  <li>也可以乘坐索道,西上西下或者西上北下;反之北上西下;</li>
+</ul>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/blog/live/huashanline.jpg-shuiyin" alt="华山地图" /></p>
+
+<h3 id="夜爬华山">夜爬华山</h3>
+
+<p>华山,又叫,太华山,上山只有一条路,下午我们现在玉泉院下面玩了一会;</p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/DSC_1163.jpg-shuiyin?imageMogr2/thumbnail/!70p" alt="玉泉院" /></p>
+
+<p>这个是华山正门,也就是从这里开始徒步爬山;</p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/DSC_1233.jpg-shuiyin?imageMogr2/thumbnail/!70p" alt="自古华山一条道" /></p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/DSC_1184.jpg-shuiyin?imageMogr2/thumbnail/!70p" alt="爬山拉练" /></p>
+
+<h4 id="第一次看日出">第一次看日出</h4>
+
+<p>华山日出也是全国九大观赏日出点,在山上有3个地点,都在东峰上,想看日出的基本都是夜爬华山;土豪随意,可以住在山上;</p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/DSC_1320.jpg-shuiyin?imageMogr2/thumbnail/!70p" alt="华山门" /></p>
+
+<ul>
+  <li>气温指数 ☆☆☆☆☆☆</li>
+</ul>
+
+<p><code class="highlighter-rouge">tips</code>:山上很冷,华山海拔2000+m,每升高1000m,气温下降6℃;</p>
+
+<ul>
+  <li>穿衣指数 ☆☆☆☆☆☆</li>
+</ul>
+
+<p>晚上爬华山的人很多,一路上都是人,一直走路的话,穿个外套,也不会感觉冷的;</p>
+
+<p>晚上的灯光,也挺漂亮的;</p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/DSC_1305.jpg?imageMogr2/thumbnail/!70p" alt="路边的霓虹灯" /></p>
+
+<p>如果停下来,就感觉很冷,尤其是到山顶,凌晨4点~6点,10月份的气温,4℃左右;</p>
+
+<p>所以,不嫌麻烦的话,最好带个羽绒服,如果不想带,可以去山上租衣服,50¥,押金100¥,然后可以去<code class="highlighter-rouge">鹞子翻身</code>处和<code class="highlighter-rouge">西峰</code>还衣服;</p>
+
+<p>这个是华山的日出,本次华山的重头戏;</p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/lucyBlog/huashan/huashanrichu.JPG-shuiyin" alt="华山日出" /></p>
+
+<p>群山远眺,这是在过了<code class="highlighter-rouge">鹞子翻身</code>,在一个房顶拍的全景:</p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/lucyBlog/huashan/huashanquanjing.jpg-shuiyin" alt="群山远眺" /></p>
+
+<p>良辰美景,怎么少得了佳人呢;</p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/lucyBlog/huashan/huahsannanfeng.JPG-shuiyin" alt="伊人阑珊望景" /></p>
+
+<p>华山之所以叫 <code class="highlighter-rouge">爬山</code>,还是因为一个字 <code class="highlighter-rouge">险</code>,很多路段都是很长的60-80°的,需要手脚并用的,往上爬的,所以,叫 <code class="highlighter-rouge">爬山</code>;</p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/DSC_1665.jpg-shuiyin?imageMogr2/thumbnail/!70p" alt="" /></p>
+
+<p>途中,这位小朋友累的,栏杆就是她的好朋友;</p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/DSC_1700.jpg-shuiyin?imageMogr2/thumbnail/!70p" alt="" /></p>
+
+<p>华山有很多这种链子,可以把心形锁或者平安锁,友情锁锁到上面;</p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/DSC_1437.jpg-shuiyin?imageMogr2/thumbnail/!70p" alt="心形锁" /></p>
+
+<p>还有,爬山随处可见的铁链;</p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/lucyBlog/huashan/huashanlianzi.JPG-shuiyin" alt="华山铁链" /></p>
+
+<h3 id="西峰莲花峰">西峰莲花峰</h3>
+
+<p>莲花峰,又称为<code class="highlighter-rouge">圣母峰</code>,有<code class="highlighter-rouge">沉香救母</code>的故事一说;</p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/DSC_1883.jpg-shuiyin?imageMogr2/thumbnail/!70p" alt="西峰远眺" /></p>
+
+<p>西峰顶上,有一块大石头,俗称<code class="highlighter-rouge">开山石</code>,也叫<code class="highlighter-rouge">斧劈石</code>,断开的石头,就像一把锋利的斧头砍开一样;大自然真是 鬼斧神工;</p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/DSC_1901.jpg-shuiyin?imageMogr2/thumbnail/!70p" alt="斧劈石" /></p>
+
+<h3 id="西峰索道">西峰索道</h3>
+
+<p>西峰索道,绝对是我做过索道最胆战心惊的一次,索道,先下–后上–在下,每次那种失重的感觉,搞得我特别难受,尤其是下到很低了,又一会上到特别高,总之,我还担心,他一不小心,掉下去咋办;现在想想,笑哭我了;</p>
+
+<p>感受一下,这个距离,这个是上去的;</p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/DSC_1985.jpg-shuiyin?imageMogr2/thumbnail/!70p" alt="西峰索道上" /></p>
+
+<p>这个是上到跟峰顶平了,然后翻过去;</p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/DSC_1989.jpg-shuiyin?imageMogr2/thumbnail/!70p" alt="西峰索道下" /></p>
+
+<p>东峰看完日出,途经鹞子翻身,南峰,走过南天门,就可以去走走<code class="highlighter-rouge">长空栈道</code>,这次,于我而言,就远远看看就行了,因为,人太多了,而且是单行往返;</p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/DSC_1518.jpg-shuiyin?imageMogr2/thumbnail/!70p" alt="鹞子翻身" /></p>
+
+<p>下了鹞子翻身,就可以去这个小亭子看看,据说是宋太祖赵匡胤与另外一个人的残局,至今无解;</p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/DSC_1578.jpg-shuiyin?imageMogr2/thumbnail/!70p" alt="棋亭残局" /></p>
+
+<p>然后就是华山二险,光看这个说明,就知道长空栈道很险了;</p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/DSC_1659.jpg-shuiyin?imageMogr2/thumbnail/!70p" alt="长空栈道说明" /></p>
+
+<p>从西峰顺着那个有点长的路走下来,往下大概10min,就可以走到西峰索道了;</p>
+
+<p>我的小姐姐,出场了;</p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/DSC_1935.jpg-shuiyin?imageMogr2/thumbnail/!70p" alt="比心小姐姐" /></p>
+
+<p>神龟探海景观</p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/DSC_1938.jpg-shuiyin?imageMogr2/thumbnail/!70p" alt="神龟探海" /></p>
+
+<h3 id="小插曲">小插曲</h3>
+
+<p>华山的玉米,水,都是挑山工背上去的,10¥,不算贵;那个大叔看着挺辛苦,也不容易,从山下背到山上,旁边的一个大姐说,山上的玉米卖 100¥ 也不贵,当然也是个玩笑;</p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/DSC_1565.jpg-shuiyin?imageMogr2/thumbnail/!70p" alt="挑玉米的大叔" /></p>
+
+<p>还碰到了玩小朋友的泡泡;</p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/DSC_1897.jpg-shuiyin?imageMogr2/thumbnail/!70p" alt="玩小朋友的泡泡" /></p>
+
+<h2 id="关中的小江南">关中的小江南</h2>
+
+<p><code class="highlighter-rouge">关中</code>,这个词,历史由来已久,据百度百科<a href="https://baike.baidu.com/item/%E5%85%B3%E4%B8%AD/13464186">关中</a>是指“四关”之内，即东潼关（函谷关）、西散关（大震关）、南武关（蓝关）、北萧关（金锁关）。现关中地区位于陕西省中部,包括西安、宝鸡、咸阳、渭南、铜川、杨凌五市一区;</p>
+
+<p>而,我家就是在渭南;渭南什么都没有,就是有泾渭分明,指的是,渭河;
+渭南什么都没有,就是有 <code class="highlighter-rouge">自古华山一条道</code>;
+渭南什么都没有,就是有,朗朗乾坤,平原千里;
+渭南在西安的东北方向,距离西安大概40 50公里,而我家 <code class="highlighter-rouge">合阳</code>县城;</p>
+
+<p>距离西安180公里,每年回家或者假节日回家,在纺织城排队永远是最多的人;
+这个尴尬的地方,尴尬的家乡,属于边缘化县城,我们村,<code class="highlighter-rouge">行家庄</code>,属于边缘中的边缘;
+这都不是重点,重点是,要走出去,要让自己走出去,还要让农村的农产品走出去,我们县城有一个地方,离我们村不远,下时候,下个沟就到了,就5公里,俗称<code class="highlighter-rouge">关中的小江南</code>,她的旁边还有一个温泉”处女泉”;</p>
+
+<p>我家的狗,见了我就跑,一脸我不认识你;</p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/DSC_2096.jpg-shuiyin?imageMogr2/thumbnail/!70p" alt="" /></p>
+
+<p>这次回家就去了莘国水城;</p>
+
+<h3 id="莘国水城---诗经的地方">莘国水城 - 诗经的地方</h3>
+
+<p>关关雎鸠,在河之洲;窈窕淑女,君子好逑;</p>
+
+<p>这个是小城门口;</p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/DSC_2130.jpg-shuiyin?imageMogr2/thumbnail/!70p" alt="莘国水城" /></p>
+
+<p>这个叫,犹抱琵琶半遮面;</p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/DSC_2272.jpg-shuiyin?imageMogr2/thumbnail/!70p" alt="犹抱琵琶半遮面" /></p>
+
+<p>这个是我小妹妹,在喂鱼,鱼料出手,鱼儿抢食;</p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/DSC_2148.jpg-shuiyin?imageMogr2/thumbnail/!70p" alt="小妹喂鱼" /></p>
+
+<p>这个比较有意思,叫 <code class="highlighter-rouge">呐喊喷泉</code>,你喊的声音越大,喷泉喷得越高,你如果想发泄一下,这个倒是不错;</p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/DSC_2325.jpg-shuiyin?imageMogr2/thumbnail/!70p" alt="呐喊喷泉" /></p>
+
+<p>摔一碗酒,喝一口酒;</p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/DSC_2332.jpg-shuiyin?imageMogr2/thumbnail/!70p" alt="摔碗酒" /></p>
+
+<h3 id="处女泉">处女泉</h3>
+
+<p>处女泉来源于古老的传说,都是我奶奶小时候讲的,说是古代洽川的女子在出嫁前都要由姊妹陪伴到该泉洗浴净身。茂密的芦苇围成一道天然屏障</p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/DSC_2106.jpg-shuiyin?imageMogr2/thumbnail/!70p" alt="处女泉" /></p>
+
+<p>倚楼听风雨;</p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/DSC_2218.jpg-shuiyin?imageMogr2/thumbnail/!70p" alt="倚楼听风雨" /></p>
+
+<p>有点长,兵马俑,华清池系列,放到下一篇文章整理;</p>
+
+<!--## 兵马俑-->
+
+<!--## 华清池-->
+
+<!--## 大雁塔-->
+
+<!--## 回民街-->
+
+<!--## 小寨-亚洲第一梯-->
+
+
+                <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a></div>
+                <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["weixin","qzone","tsina","tqq","twi","fbook"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["weixin","qzone","tsina","tqq","twi","fbook"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+                <hr style="visibility: hidden;">
+
+            <!-- 打赏功能 -->
+            <div>
+                <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+                <div>☛兄dei，请我喝杯茶☚</div>
+                <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+                    <span>打赏</span>
+                </button>
+                <div id="QR" style="display: none;">
+                        
+                        
+                <div id="wechat" style="display: inline-block">
+                <img id="wechat_qr" src="/img/payimg/weipayimg.jpg" alt="yizibi 微信支付"/>
+                            <p>微信支付</p>
+                </div>
+                        
+                        
+                        
+                <div id="alipay" style="display: inline-block">
+                <img id="alipay_qr" src="/img/payimg/alipayimg.jpg" alt="yizibi 支付宝"/>
+                <p>支付宝</p>
+                </div>
+                        
+                        
+                        
+                        
+                </div>
+                </div>
+                
+            </div>
+            
+
+   <!--  上一篇或者下一篇post按钮 -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2018/09/26/Mac-%E4%B8%80%E6%AD%A5%E4%B8%80%E6%AD%A5%E6%95%99%E4%BD%A0%E5%9C%A8Jekyll%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" data-toggle="tooltip" data-placement="top" title="Mac 一步一步教你在Jekyll博客添加评论系统">
+                        Previous<br>
+                        <span>Mac 一步一步教你在Jekyll博客添加评论系统</span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2018/10/13/%E5%92%8C%E4%BD%A0%E8%B5%B0%E8%BF%87%E8%A5%BF%E5%AE%89%E7%9A%84%E9%82%A3%E4%BA%9B%E5%9C%B0%E6%96%B9/" data-toggle="tooltip" data-placement="top" title="和你走过西安的那些地方">
+                        Next<br>
+                        <span>和你走过西安的那些地方</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+
+
+<!--                -->
+
+                
+                
+                <!--   gitalk       -->
+                
+            </div>  
+
+    <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+                				<a href="/tags/#iOS技术" title="iOS技术" rel="13">
+                                    iOS技术
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#iOS问题" title="iOS问题" rel="2">
+                                    iOS问题
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#VPS" title="VPS" rel="2">
+                                    VPS
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#工具" title="工具" rel="6">
+                                    工具
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#生活" title="生活" rel="3">
+                                    生活
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#Linux" title="Linux" rel="2">
+                                    Linux
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#博客" title="博客" rel="3">
+                                    博客
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#随笔" title="随笔" rel="2">
+                                    随笔
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#摄影" title="摄影" rel="2">
+                                    摄影
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#旅行" title="旅行" rel="2">
+                                    旅行
+                                </a>
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="https://blog.searchinfogo.com">Junhua's Blog</a></li>
+                    
+                        <li><a href="http://ilongge.cn/">卟败灬筱龙</a></li>
+                    
+                        <li><a href="http://tombraiderjf.com/">Lara Croft</a></li>
+                    
+                        <li><a href="http://srsyrzz.ml/">耀日庄主的博客</a></li>
+                    
+                        <li><a href="https://leohope.com/">Hope</a></li>
+                    
+                        <li><a href="https://www.chairyfish.com/">五斤</a></li>
+                    
+                        <li><a href="https://asdfv1929.github.io/">asdfv1929</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+    
+
+    
+</article>
+
+
+<!-- Add support for Mathjax by Voleking-->
+
+
+
+
+<section class="post-comments">
+    
+    <div id="disqus_thread"></div>
+    <script>
+        
+        var disqus_config = function () {
+            this.page.url = "http://localhost:4000/2018/10/10/%E5%86%99%E5%AE%8C%E4%BB%A3%E7%A0%81%E5%8E%BB%E6%97%85%E8%A1%8Cmarkdown/";
+            this.page.identifier = "/2018/10/10/%E5%86%99%E5%AE%8C%E4%BB%A3%E7%A0%81%E5%8E%BB%E6%97%85%E8%A1%8Cmarkdown/";
+        };
+    
+    var disqus_shortname = 'yizibi';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+     var d = document, s = d.createElement('script');
+     s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+     s.setAttribute('data-timestamp', +new Date());
+     (d.head || d.body).appendChild(s);
+     })();
+        </script>
+    <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
+    
+    
+    
+    
+    
+</section>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<!--
+Author: Ray-Eldath
+refer to:
+ - https://github.com/theme-next/hexo-theme-next/blob/master/source/js/src/utils.js
+ - https://jingyan.baidu.com/article/b2c186c83ec846c46ef6ff80.html
+ - http://www.bkjia.com/jQuery/449205.html
+-->
+<style media="screen">
+  .scroll {
+    z-index: 10000;
+    display: none;
+    height: 24px;
+    background: #222;
+    color: #fff;
+    line-height: 24px;
+    text-align: center;
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+</style>
+<div class="scroll">
+  <i class="fa fa-arrow-up" style="margin-left: 4px"></i>
+  <span class="scrollpercent" style="margin-left: -2px"></span>
+  <span style="margin-left: -4px; margin-right: 4px">%</span>
+</div>
+
+<script src="/js/util.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    if (utils.isMobile()) {
+      $('.scroll').hide();
+      return;
+    }
+    $(window).scroll(function() {
+      let scrollValue = $(window).scrollTop();
+      var scrollPercentRounded = Math.round((scrollValue / utils.getContentVisibilityHeight()) * 100);
+      var scrollPercentMaxed = (scrollPercentRounded > 100) ? 100 : scrollPercentRounded;
+      $('.scrollpercent').html(scrollPercentMaxed);
+      scrollValue > 100 ? $('.scroll').fadeIn() : $('.scroll').fadeOut();
+    });
+    $('.scroll').click(function() {
+      $('html, body').animate({
+        scrollTop: 0
+      }, 300);
+    })
+  })
+</script>
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://twitter.com/yizibi">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/li-lin-fei">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a target="_blank" href="http://weibo.com/2524618644">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+
+                    
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/yizibbi">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/yizibi">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/露鑫-李-525b58111">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">
+<!--                  本站总访问量<span id="busuanzi_value_site_pv"></span>次，本站访客数<span id="busuanzi_value_site_uv"></span>人次，本文总阅读量<span id="busuanzi_value_page_pv"></span>次-->
+                    <span class="site-uv" title="总点击人数">
+                    <img src="/img/vendor/octicons/svg/person.svg" width="10" height="16">
+                    <span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
+                    <span class="site-pv" title="总点击量">
+                    <img src="/img/vendor/octicons/svg/eye.svg" width="16" height="16">
+                    <span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
+                    <span class="page-pv"title="本页面点击人数">
+                    <img src="/img/vendor/octicons/svg/file-text.svg" width="12" height="16">
+                    <span class="busuanzi-value" id="busuanzi_value_page_pv"></span></span>
+                    <br>
+                    Copyright &copy; 一之笔 2018
+                    <br>
+                    Theme by <a href="https://github.com/Huxpro/huxpro.github.io">Hux</a> | 本站源码 <a href="https://github.com/yizibi/yizibi.github.io">yizibi</a>
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=yizibi&repo=yizibi.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+            
+        </div>
+    </div>
+</footer>
+<!--网站统计-->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+<!-- Service Worker -->
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async('/js/jquery.tagcloud.js',function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-124793396-1';
+    var _gaDomain = 'auto';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog (selector) {
+
+        // interop with multilangual 
+        if ('' == 'true') {
+            _containerSelector = 'div.post-container.active'
+        } else {
+            _containerSelector = 'div.post-container'
+        }
+
+        // init
+        var P = $(_containerSelector),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        // clean
+        $(selector).html('')
+
+        // appending
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+<!-- Multi-Lingual -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+<script src="/js/jquery.min.js"></script>
+<style>
+.videoWrapper {
+	position: relative;
+	padding-bottom: 56.333%;
+	height: 0;
+    background: black;
+}
+.videoWrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+    border: 0;
+}    
+</style>
+
+<script>
+function get_youtube_id(url) {
+    var p = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+    return (url.match(p)) ? RegExp.$1 : false;
+}
+function vimeo_embed(url,el) {
+    var id = false;
+    $.ajax({
+      url: 'https://vimeo.com/api/oembed.json?url='+url,
+      async: true,
+      success: function(response) {
+        if(response.video_id) {
+          id = response.video_id;
+          if(url.indexOf('autoplay=1') !== -1) var autoplay=1; else var autoplay=0;
+          if(url.indexOf('loop=1') !== -1) var loop=1; else var loop=0;
+          var theInnerHTML = '<div class="videoWrapper"><iframe src="https://player.vimeo.com/video/'+id+'/?byline=0&title=0&portrait=0';
+          if(autoplay==1) theInnerHTML += '&autoplay=1';
+          if(loop==1) theInnerHTML += '&loop=1';
+          theInnerHTML += '" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>'; 
+          el.innerHTML = theInnerHTML;
+        }
+      }
+    });
+}
+function video_embed() {
+    var p = document.getElementsByTagName('p');
+    for(var i = 0; i < p.length; i++) {
+        //check if this is an external url (that starts with https:// or http://
+        if (p[i].innerHTML.indexOf("http://") == 0 ||
+            p[i].innerHTML.indexOf("https://") == 0) {
+            var youtube_id = get_youtube_id(p[i].innerHTML);
+            if(youtube_id) {
+                if(p[i].innerHTML.indexOf('autoplay=1') !== -1) var autoplay=1; else var autoplay=0;
+                if(p[i].innerHTML.indexOf('loop=1') !== -1) var loop=1; else var loop=0;
+                var theInnerHTML = '<div class="videoWrapper"><iframe width="720" height="420" src="https://www.youtube.com/embed/' + youtube_id + '?rel=0&showinfo=0';
+                if(autoplay==1) theInnerHTML += '&autoplay=1';
+                if(loop==1) theInnerHTML += '&loop=1&playlist='+youtube_id+'&version=3';
+                theInnerHTML += '" frameborder="0" allowfullscreen></iframe></div>';
+                p[i].innerHTML = theInnerHTML;
+            }
+            if(p[i].innerHTML.indexOf('vimeo.com') !== -1) {
+                //ask vimeo for the id and place the embed
+                vimeo_embed(p[i].innerHTML,p[i]);
+            }
+        }
+    }
+}
+video_embed();
+
+function mp3_embed() {
+    var p = document.getElementsByTagName('p');
+    for(var i = 0; i < p.length; i++) {
+        if(p[i].innerHTML.indexOf('.mp3') !== -1) {
+            var str = p[i].innerHTML.split('?');
+            if(str.length == 1) str[1] = '';
+            var str1 = str[1];
+            str1 = str1.replace('&','').replace('&','');
+            str1 = str1.replace('autoplay=1','').replace('autoplay=0','');
+            str1 = str1.replace('loop=1','').replace('loop=0','');
+            str1 = str1.replace('controls=0','').replace('controls=1','');
+
+            if (str[0].lastIndexOf('.mp3', str[0].length - 4) === str[0].length - 4 && str1.length == 0) {
+                if(str[1].indexOf('autoplay=1') !== -1) var autoplay=1; else var autoplay=0;
+                if(str[1].indexOf('loop=1') !== -1) var loop=1; else var loop=0;
+                if(str[1].indexOf('controls=0') !== -1) var controls=0; else var controls=1;
+                var newInnerHTML = '<audio';
+                if(autoplay==1) newInnerHTML += ' autoplay';
+                if(loop==1) newInnerHTML += ' loop';
+                if(controls==1) newInnerHTML += ' controls';
+                newInnerHTML += '><source src="'+str[0]+'" type="audio/mpeg">Your browser does not support the audio element.</audio>';
+                p[i].innerHTML = newInnerHTML;
+            }
+        }
+    }
+}
+mp3_embed();
+</script>
+
+<!--鼠标点击爱心动画-->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+</body>
+
+</html>

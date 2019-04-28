@@ -1,0 +1,120 @@
+# Site settings
+title: 鑫联盟3.0
+SEOTitle: 鑫联盟 | 鑫联盟Pro
+header-img: img/home-bg.jpg
+email: liluxinios@gmail.com
+description: "随行付鑫联盟是基于互联网分享精神，以支付产品为载体而实现全民创业。在该联盟的盟友将享有鑫联盟推出的稳定,公平,透明的政策和长期收益."
+keyword: "xinlianmeng,xinlianmengpro,suixingfu,随行付，鑫联盟3.0,随行付鑫联盟,mpos,鑫联盟创业,鑫联盟注册,鑫联盟3.0,鑫联盟pro,随行付MPOS"
+url: "https://xinlianmengpro.github.io/"              # your host, for absolute URL
+baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
+
+# Publish posts or collection documents with a future date.
+future: true
+
+# SNS settings
+RSS: true
+#weibo_username:     2524618644
+#zhihu_username:     li-lin-fei
+#github_username:    yizibi
+#linkedin_username:  露鑫-李-525b58111
+#twitter_username:   yizibi
+#facebook_username:  yizibbi
+
+
+
+# Build settings
+# from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
+highlighter: rouge
+textColor: #FF0000
+permalink: pretty
+paginate: 10
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md","README.zh.md"]
+anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
+# If you have timezone issue (e.g. #68) in China, uncomment to use this:
+timezone: CN  
+
+# Back to top 回到顶部by ray-eldath
+b2t: true
+
+# Gems
+# from PR#40, to support local preview for Jekyll 3.0
+# make sure you have this gem installed
+# `$ gem install jekyll-paginate`
+plugins: [jekyll-paginate]
+plugins: [jekyll-sitemap]
+gems: [jekyll-sitemap]
+paginate_path: "page:num"   #分页页面路径格式
+
+
+
+# Markdown settings
+# replace redcarpet to kramdown,
+# although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
+# document: http://jekyllrb.com/docs/configuration/#kramdown
+markdown: kramdown
+kramdown:
+  input: GFM                            # use Github Flavored Markdown !important
+  syntax_highlighter_opts:
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
+
+# Comment
+#comment:
+    #disqus: yizibi
+
+# Netease settings
+netease_comment: false
+
+gitalk:
+  # enable: true
+   #owner: xinlianmengpro
+   #repo: xinlianmengpro.github.io
+   #clientID: 3e12c08c2ec52afbcb30
+   #clientSecret: c2a74d279e7b42cf782a1d2d1b5a410d27c5ab57
+  # admin: xinlianmengpro
+
+
+# Analytics settings
+# Baidu Analytics 
+# ba_track_id: [your track id]
+
+# Google Analytics
+ga_track_id: 'UA-139219211-1'            # Format: UA-xxxxxx-xx
+ga_domain: auto
+
+
+
+# Sidebar settings
+sidebar: true                           # whether or not using Sidebar.
+sidebar-about-description: “鑫联盟3.0，自主创业，天道酬勤，前程自顺！"
+sidebar-avatar: /img/avatar-hux-ny.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+
+
+
+# Featured Tags
+featured-tags: true                     # whether or not using Feature-Tags
+featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
+
+
+
+# Progressive Web Apps
+chrome-tab-theme-color: "#000000"
+service-worker: false
+
+
+
+# MathJax rendering for layout:page (e.g. post preview)
+page-mathjax: false
+
+
+
+# Friends
+friends: [
+    {
+	title: "一之笔",
+	href: "https://yizibi.github.io"
+    }
+]

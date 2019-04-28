@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="iOS 开发 公司合伙人 | 李露鑫，iOS & Photography Lover，Software Engineer，Entrepreneur | 这里是 一之笔 @Yizibbi 李露鑫 的个人博客， 生活需要仪式感，💪。">
+    <meta name="keywords"  content="李露鑫, Yizibi,yizibi,一之笔的博客,一之笔,一支笔, iOS, 公司合伙人, @yizibi, @yizibi的博客, 博客, 个人网站, 互联网">
+    <meta name="theme-color" content="#000000">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Mac科学搭建VPN,绿色上网 - 一之笔的博客 | Yizibi Blog">
+    
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="181018更新内容
+
+">
+    
+    <meta property="article:published_time" content="2016-07-25T06:32:24Z">
+    
+    
+    <meta property="article:author" content="一之笔">
+    
+    
+    <meta property="article:tag" content="VPS">
+    
+    <meta property="article:tag" content="工具">
+    
+    
+    <meta property="og:image" content="http://localhost:4000/img/avatar-hux-ny.jpg">
+    <meta property="og:url" content="http://localhost:4000/2016/07/25/Mac%E7%A7%91%E5%AD%A6%E6%90%AD%E5%BB%BAVPN,%E7%BB%BF%E8%89%B2%E4%B8%8A%E7%BD%91/">
+    <meta property="og:site_name" content="一之笔的博客 | Yizibi Blog">
+    
+    <title>Mac科学搭建VPN,绿色上网 - 一之笔的博客 | Yizibi Blog</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/2016/07/25/Mac%E7%A7%91%E5%AD%A6%E6%90%AD%E5%BB%BAVPN,%E7%BB%BF%E8%89%B2%E4%B8%8A%E7%BD%91/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<script type="text/javascript" color="238,205,205" opacity='0.7' zIndex="-2" count="99" src="../../../../js/canvas-nest.min.js"></script>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">一之笔</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/archive/">Archive</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/portfolio/">Portfolio</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    var __HuxNav__ = {
+        close: function(){
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        },
+        open: function(){
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+
+    // Bind Event
+    $toggle.addEventListener('click', function(e){
+        if ($navbar.className.indexOf('in') > 0) {
+            __HuxNav__.close()
+        }else{
+            __HuxNav__.open()
+        }
+    })
+
+    /**
+     * Since Fastclick is used to delegate 'touchstart' globally
+     * to hack 300ms delay in iOS by performing a fake 'click',
+     * Using 'e.stopPropagation' to stop 'touchstart' event from 
+     * $toggle/$collapse will break global delegation.
+     * 
+     * Instead, we use a 'e.target' filter to prevent handler
+     * added to document close HuxNav.  
+     *
+     * Also, we use 'click' instead of 'touchstart' as compromise
+     */
+    document.addEventListener('click', function(e){
+        if(e.target == $toggle) return;
+        if(e.target.className == 'icon-bar') return;
+        __HuxNav__.close();
+    })
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/home-bg-o.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<!-- canvas-nest.min.js -->
+<!--<script type="text/javascript" src="../../../../js/canvas-nest.min.js"></script>-->
+<head>
+    <link href="../../../../css/rouge.css" rel="stylesheet">
+</head>
+<script type="text/javascript" color="238,205,205" opacity='0.7' zIndex="-2" count="99" src="../../../../js/canvas-nest.min.js"></script>
+<!--//添加评论系统-->
+<link rel="stylesheet" href="../../../../css/gitalk.css">
+    <script src="../../../../js/gitalk.min.js"></script>
+<!--    打赏-->
+<link href="/css/reward.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/home-bg-o.jpg')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#VPS" title="VPS">VPS</a>
+                        
+                        <a class="tag" href="/tags/#工具" title="工具">工具</a>
+                        
+                    </div>
+                    <h1>Mac科学搭建VPN,绿色上网</h1>
+                    
+                    
+                    <h2 class="subheading">绿色上网</h2>
+                    
+                    <span class="meta">Posted by 一之笔 on July 25, 2016</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <!-- Multi-Lingual -->
+                
+
+
+				<h3 id="181018更新内容">181018更新内容</h3>
+
+<blockquote>
+  <p>手机 APP Store中,相关的VPN配置APP差不多都已经下线了,如果需要的话,可以在某宝买一个国外的apple ID,大概5块钱,登录国外的APP Store,下载这个软件
+<img src="http://yizhibi.6chemical.com/potatsoVPN.png?imageMogr2/thumbnail/!70p" alt="" /></p>
+</blockquote>
+
+<h3 id="写在前面">写在前面</h3>
+<p>作为一枚小小的程序猿,很多时候,由于度娘资源有限,满足不了我小小的愿望,而我也是一个不安分的程序猿,曾经一直使用Labtern(<strong>蓝灯</strong>),但是不稳定,速度也不怎么友好,后来通过Google了解到可以自己搭建VPS来实现自己科学上网的愿望，通过参考<a href="http://shadowsocks.blogspot.jp/2015/01/shadowsocks.html#gpluscomments">史上最详尽Shadowsocks从零开始一站式翻墙教程</a>,终于实现了科学绿色上网,少年,行动起来吧!</p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/lucyBlog/google/22.jpg" alt="" /></p>
+
+<p><strong>注意</strong>:</p>
+
+<p>本片博客主要是在Mac下如何搭建个人VPN,windows或Linux的环境请参考<a href="http://shadowsocks.blogspot.jp/2015/01/shadowsocks.html#gpluscomments">史上最详尽Shadowsocks从零开始一站式翻墙教程</a></p>
+
+<h2 id="搭建过程">搭建过程</h2>
+<h3 id="一准备工作">一、准备工作</h3>
+
+<ul>
+  <li>1 购买服务器（VPS）</li>
+  <li>2 ZOC终端利器
+~~* 3 自动化脚本(已废弃) ~~</li>
+  <li>4 配置参数</li>
+</ul>
+
+<h3 id="二购买vps">二、购买VPS</h3>
+<p>查了一下资料，自己使用的搬瓦工<a href="https://bandwagonhost.com/index.php">(BandwagonHOST)</a>，很稳定，配置好之后，可以给同事或者朋友开通账号，谁用谁知道！</p>
+
+<p><img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRmPf2yc7uFYD9PUe5xJtF-AmvHu40XzLqgkmHws9sb524psj1-jw" alt="" /></p>
+
+<h3 id="购买步骤">购买步骤</h3>
+<p><strong>支持支付宝支付</strong></p>
+
+<blockquote>
+  <p>OpenVZ架构 256MB内存 10GB硬盘 500GB流量/月 19.99美元/年（折合人民币10元/月）</p>
+</blockquote>
+
+<h4 id="21选择套餐">2.1：选择套餐</h4>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/224008-c7201fef27c42445?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<h4 id="22确认订单">2.2：确认订单</h4>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/224008-e7f53d71d9bce995?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<h4 id="23确认订单">2.3：确认订单</h4>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/224008-e7f53d71d9bce995?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<h4 id="24付款">2.4：付款</h4>
+
+<blockquote>
+  <p>需要注意的是，付款之前，需要注册搬瓦工，并完善相应的订单信息，在新页面的“Your Details”部分输入你的个人资料以及注册信息，除了“Address 2”和“Company Name”之外，其余均为必填项目，注意，尽量填写真实信息，如果你在中国大陆，“Country”请选择“China”，以免被系统判定为欺诈而注册失败。“Payment Method”里选择“Credit Card and AliPay (Stripe)”，勾选“I have read and agree to the Terms of Service”，最后点击“Complete Order”，页面跳转后，点击绿色的大按钮“Pay now”，然后会弹出一个小窗口，先在“电子邮箱”一栏里输入你的支付宝账号（此处必须为邮箱账号），然后点击下方的“支付宝”按钮，此时系统会自动给你支付宝账号绑定的手机号发送一条带验证码的短信，在“输入发送至xxxx的校验码”下方输入6位数的短信校验码，然后在最下面的“身份证号码后5位”框里输入你的身份证号后5位，最后点击蓝色的“Pay now $xx”按钮，完成支付。</p>
+</blockquote>
+
+<p>订单信息如下图：</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/224008-209185785888d3f3?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/224008-c3bceaaf3dc972e3?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/224008-8f6a60207dcd6887?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>基本上到这边，就完成VPS的购买了，接下来重点来了。。</p>
+
+<p>关于购买这一部分，也可参考<a href="http://www.jianshu.com/p/a6d9fbd8133c">Mac下搭建Shadowsocks实现科学上网</a></p>
+
+<h3 id="三zoc终端利器">三、ZOC终端利器</h3>
+
+<p>ZOC其实跟终端差不多，但是比终端功能强大，可用于上传文件到VPS，具体界面如下，后面会用到，这个神器！</p>
+
+<p><a href="http://www.emtec.com/download.html#zocfiles">ZOC下载地址</a></p>
+
+<p><img src="http://i1-mac.softpedia-static.com/screenshots/ZOC_2.jpg" alt="" /></p>
+
+<p><del>### 四、自动化脚本</del></p>
+
+<p><del>[下载地址]</del></p>
+
+<p><del>作用：用于自动化连接VPS，给他人开通账号；</del></p>
+
+<p><strong>**</strong><strong>**</strong><strong>**</strong><strong>**</strong><strong>**  0122更新  由于之前的加密方式被封,VPS也到期,重新搭建了一下  **</strong><strong>**</strong><strong>**</strong><strong>**</strong><strong>**</strong><strong>**</strong></p>
+
+<h3 id="五配置环境">五、配置环境</h3>
+
+<h4 id="51-安装shadowsocks客户端">5.1 安装Shadowsocks客户端</h4>
+
+<p>Shadowsocks客户端的<a href="https://shadowsocks.org/en/download/clients.html">下载地址</a>，可以看到有各种客户端的下载。貌似这货也是得翻墙才能访问到。</p>
+
+<h4 id="52-mac配置">5.2 Mac配置</h4>
+
+<p>下载 Shadowsocks 完成后,按照如下步骤打开:</p>
+
+<p><img src="http://yizhibi.6chemical.com/lucyBlog/WechatIMG47.jpeg" alt="ss配置" /></p>
+
+<p>主要有四个地方要填，服务器的地址，端口号，加密方法，密码。服务器地址即为之前 Main controls 选项中的IP地址。端口号、加密方法、密码必须与之前 Shadowsocks Server 中的信息一一匹配，否则会连接失败。</p>
+
+<h4 id="53-手机配置">5.3 手机配置</h4>
+
+<p><del>App Store 搜索 SuperWingy,</del>然后打开,添加配置:参数基本上跟电脑差不多,
+手机 APP Store中,相关的VPN配置APP差不多都已经下线了,如果需要的话,可以在某宝买一个国外的apple ID,大概5块钱,登录国外的APP Store,下载这个软件
+<img src="http://yizhibi.6chemical.com/potatsoVPN.png?imageMogr2/thumbnail/!70p" alt="" />
+具体配置如下:
+<img src="http://o9zpq25pv.bkt.clouddn.com/lucyBlog/google/WechatIMG48.jpeg" alt="手机配置" /></p>
+
+<p>[参考文章]</p>
+<ol>
+  <li><a href="http://shadowsocks.blogspot.jp/2015/01/shadowsocks.html#gpluscomments">史上最详尽Shadowsocks从零开始一站式翻墙教程</a>;</li>
+  <li><a href="https://vc2tea.com/whats-shadowsocks/">写给非专业人士看的 Shadowsocks 简介</a>;</li>
+  <li><a href="https://moshuqi.github.io/2017/07/20/%E8%87%AA%E5%B7%B1%E6%90%AD%E5%BB%BAVPN%E6%9C%8D%E5%8A%A1%E5%99%A8/#mac%E9%85%8D%E7%BD%AE">搬瓦工+shadowsocks：搭建自己的VPN服务器</a>;</li>
+</ol>
+
+
+
+                <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a></div>
+                <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["weixin","qzone","tsina","tqq","twi","fbook"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["weixin","qzone","tsina","tqq","twi","fbook"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+                <hr style="visibility: hidden;">
+
+            <!-- 打赏功能 -->
+            <div>
+                <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+                <div>☛兄dei，请我喝杯茶☚</div>
+                <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+                    <span>打赏</span>
+                </button>
+                <div id="QR" style="display: none;">
+                        
+                        
+                <div id="wechat" style="display: inline-block">
+                <img id="wechat_qr" src="/img/payimg/weipayimg.jpg" alt="yizibi 微信支付"/>
+                            <p>微信支付</p>
+                </div>
+                        
+                        
+                        
+                <div id="alipay" style="display: inline-block">
+                <img id="alipay_qr" src="/img/payimg/alipayimg.jpg" alt="yizibi 支付宝"/>
+                <p>支付宝</p>
+                </div>
+                        
+                        
+                        
+                        
+                </div>
+                </div>
+                
+            </div>
+            
+
+   <!--  上一篇或者下一篇post按钮 -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2016/05/25/AFNetworking-%E6%8A%A5%E9%94%99384/" data-toggle="tooltip" data-placement="top" title="AFNetworking 报错3840...">
+                        Previous<br>
+                        <span>AFNetworking 报错3840...</span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2016/08/20/const,static,extern%E5%9C%A8%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8/" data-toggle="tooltip" data-placement="top" title="const,static,extern在开发中的使用">
+                        Next<br>
+                        <span>const,static,extern在开发中的使用</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+
+
+<!--                -->
+
+                
+                
+                <!--   gitalk       -->
+                
+            </div>  
+
+    <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+                				<a href="/tags/#iOS技术" title="iOS技术" rel="13">
+                                    iOS技术
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#iOS问题" title="iOS问题" rel="2">
+                                    iOS问题
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#VPS" title="VPS" rel="2">
+                                    VPS
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#工具" title="工具" rel="6">
+                                    工具
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#生活" title="生活" rel="3">
+                                    生活
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#Linux" title="Linux" rel="2">
+                                    Linux
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#博客" title="博客" rel="3">
+                                    博客
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#随笔" title="随笔" rel="2">
+                                    随笔
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#摄影" title="摄影" rel="2">
+                                    摄影
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#旅行" title="旅行" rel="2">
+                                    旅行
+                                </a>
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="https://blog.searchinfogo.com">Junhua's Blog</a></li>
+                    
+                        <li><a href="http://ilongge.cn/">卟败灬筱龙</a></li>
+                    
+                        <li><a href="http://tombraiderjf.com/">Lara Croft</a></li>
+                    
+                        <li><a href="http://srsyrzz.ml/">耀日庄主的博客</a></li>
+                    
+                        <li><a href="https://leohope.com/">Hope</a></li>
+                    
+                        <li><a href="https://www.chairyfish.com/">五斤</a></li>
+                    
+                        <li><a href="https://asdfv1929.github.io/">asdfv1929</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+    
+
+    
+</article>
+
+
+<!-- Add support for Mathjax by Voleking-->
+
+
+
+
+<section class="post-comments">
+    
+    <div id="disqus_thread"></div>
+    <script>
+        
+        var disqus_config = function () {
+            this.page.url = "http://localhost:4000/2016/07/25/Mac%E7%A7%91%E5%AD%A6%E6%90%AD%E5%BB%BAVPN,%E7%BB%BF%E8%89%B2%E4%B8%8A%E7%BD%91/";
+            this.page.identifier = "/2016/07/25/Mac%E7%A7%91%E5%AD%A6%E6%90%AD%E5%BB%BAVPN,%E7%BB%BF%E8%89%B2%E4%B8%8A%E7%BD%91/";
+        };
+    
+    var disqus_shortname = 'yizibi';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+     var d = document, s = d.createElement('script');
+     s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+     s.setAttribute('data-timestamp', +new Date());
+     (d.head || d.body).appendChild(s);
+     })();
+        </script>
+    <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
+    
+    
+    
+    
+    
+</section>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<!--
+Author: Ray-Eldath
+refer to:
+ - https://github.com/theme-next/hexo-theme-next/blob/master/source/js/src/utils.js
+ - https://jingyan.baidu.com/article/b2c186c83ec846c46ef6ff80.html
+ - http://www.bkjia.com/jQuery/449205.html
+-->
+<style media="screen">
+  .scroll {
+    z-index: 10000;
+    display: none;
+    height: 24px;
+    background: #222;
+    color: #fff;
+    line-height: 24px;
+    text-align: center;
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+</style>
+<div class="scroll">
+  <i class="fa fa-arrow-up" style="margin-left: 4px"></i>
+  <span class="scrollpercent" style="margin-left: -2px"></span>
+  <span style="margin-left: -4px; margin-right: 4px">%</span>
+</div>
+
+<script src="/js/util.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    if (utils.isMobile()) {
+      $('.scroll').hide();
+      return;
+    }
+    $(window).scroll(function() {
+      let scrollValue = $(window).scrollTop();
+      var scrollPercentRounded = Math.round((scrollValue / utils.getContentVisibilityHeight()) * 100);
+      var scrollPercentMaxed = (scrollPercentRounded > 100) ? 100 : scrollPercentRounded;
+      $('.scrollpercent').html(scrollPercentMaxed);
+      scrollValue > 100 ? $('.scroll').fadeIn() : $('.scroll').fadeOut();
+    });
+    $('.scroll').click(function() {
+      $('html, body').animate({
+        scrollTop: 0
+      }, 300);
+    })
+  })
+</script>
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://twitter.com/yizibi">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/li-lin-fei">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a target="_blank" href="http://weibo.com/2524618644">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+
+                    
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/yizibbi">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/yizibi">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/露鑫-李-525b58111">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">
+<!--                  本站总访问量<span id="busuanzi_value_site_pv"></span>次，本站访客数<span id="busuanzi_value_site_uv"></span>人次，本文总阅读量<span id="busuanzi_value_page_pv"></span>次-->
+                    <span class="site-uv" title="总点击人数">
+                    <img src="/img/vendor/octicons/svg/person.svg" width="10" height="16">
+                    <span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
+                    <span class="site-pv" title="总点击量">
+                    <img src="/img/vendor/octicons/svg/eye.svg" width="16" height="16">
+                    <span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
+                    <span class="page-pv"title="本页面点击人数">
+                    <img src="/img/vendor/octicons/svg/file-text.svg" width="12" height="16">
+                    <span class="busuanzi-value" id="busuanzi_value_page_pv"></span></span>
+                    <br>
+                    Copyright &copy; 一之笔 2018
+                    <br>
+                    Theme by <a href="https://github.com/Huxpro/huxpro.github.io">Hux</a> | 本站源码 <a href="https://github.com/yizibi/yizibi.github.io">yizibi</a>
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=yizibi&repo=yizibi.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+            
+        </div>
+    </div>
+</footer>
+<!--网站统计-->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+<!-- Service Worker -->
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async('/js/jquery.tagcloud.js',function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-124793396-1';
+    var _gaDomain = 'auto';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog (selector) {
+
+        // interop with multilangual 
+        if ('' == 'true') {
+            _containerSelector = 'div.post-container.active'
+        } else {
+            _containerSelector = 'div.post-container'
+        }
+
+        // init
+        var P = $(_containerSelector),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        // clean
+        $(selector).html('')
+
+        // appending
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+<!-- Multi-Lingual -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+<script src="/js/jquery.min.js"></script>
+<style>
+.videoWrapper {
+	position: relative;
+	padding-bottom: 56.333%;
+	height: 0;
+    background: black;
+}
+.videoWrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+    border: 0;
+}    
+</style>
+
+<script>
+function get_youtube_id(url) {
+    var p = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+    return (url.match(p)) ? RegExp.$1 : false;
+}
+function vimeo_embed(url,el) {
+    var id = false;
+    $.ajax({
+      url: 'https://vimeo.com/api/oembed.json?url='+url,
+      async: true,
+      success: function(response) {
+        if(response.video_id) {
+          id = response.video_id;
+          if(url.indexOf('autoplay=1') !== -1) var autoplay=1; else var autoplay=0;
+          if(url.indexOf('loop=1') !== -1) var loop=1; else var loop=0;
+          var theInnerHTML = '<div class="videoWrapper"><iframe src="https://player.vimeo.com/video/'+id+'/?byline=0&title=0&portrait=0';
+          if(autoplay==1) theInnerHTML += '&autoplay=1';
+          if(loop==1) theInnerHTML += '&loop=1';
+          theInnerHTML += '" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>'; 
+          el.innerHTML = theInnerHTML;
+        }
+      }
+    });
+}
+function video_embed() {
+    var p = document.getElementsByTagName('p');
+    for(var i = 0; i < p.length; i++) {
+        //check if this is an external url (that starts with https:// or http://
+        if (p[i].innerHTML.indexOf("http://") == 0 ||
+            p[i].innerHTML.indexOf("https://") == 0) {
+            var youtube_id = get_youtube_id(p[i].innerHTML);
+            if(youtube_id) {
+                if(p[i].innerHTML.indexOf('autoplay=1') !== -1) var autoplay=1; else var autoplay=0;
+                if(p[i].innerHTML.indexOf('loop=1') !== -1) var loop=1; else var loop=0;
+                var theInnerHTML = '<div class="videoWrapper"><iframe width="720" height="420" src="https://www.youtube.com/embed/' + youtube_id + '?rel=0&showinfo=0';
+                if(autoplay==1) theInnerHTML += '&autoplay=1';
+                if(loop==1) theInnerHTML += '&loop=1&playlist='+youtube_id+'&version=3';
+                theInnerHTML += '" frameborder="0" allowfullscreen></iframe></div>';
+                p[i].innerHTML = theInnerHTML;
+            }
+            if(p[i].innerHTML.indexOf('vimeo.com') !== -1) {
+                //ask vimeo for the id and place the embed
+                vimeo_embed(p[i].innerHTML,p[i]);
+            }
+        }
+    }
+}
+video_embed();
+
+function mp3_embed() {
+    var p = document.getElementsByTagName('p');
+    for(var i = 0; i < p.length; i++) {
+        if(p[i].innerHTML.indexOf('.mp3') !== -1) {
+            var str = p[i].innerHTML.split('?');
+            if(str.length == 1) str[1] = '';
+            var str1 = str[1];
+            str1 = str1.replace('&','').replace('&','');
+            str1 = str1.replace('autoplay=1','').replace('autoplay=0','');
+            str1 = str1.replace('loop=1','').replace('loop=0','');
+            str1 = str1.replace('controls=0','').replace('controls=1','');
+
+            if (str[0].lastIndexOf('.mp3', str[0].length - 4) === str[0].length - 4 && str1.length == 0) {
+                if(str[1].indexOf('autoplay=1') !== -1) var autoplay=1; else var autoplay=0;
+                if(str[1].indexOf('loop=1') !== -1) var loop=1; else var loop=0;
+                if(str[1].indexOf('controls=0') !== -1) var controls=0; else var controls=1;
+                var newInnerHTML = '<audio';
+                if(autoplay==1) newInnerHTML += ' autoplay';
+                if(loop==1) newInnerHTML += ' loop';
+                if(controls==1) newInnerHTML += ' controls';
+                newInnerHTML += '><source src="'+str[0]+'" type="audio/mpeg">Your browser does not support the audio element.</audio>';
+                p[i].innerHTML = newInnerHTML;
+            }
+        }
+    }
+}
+mp3_embed();
+</script>
+
+<!--鼠标点击爱心动画-->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+</body>
+
+</html>

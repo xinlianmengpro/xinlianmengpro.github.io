@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="iOS 开发 公司合伙人 | 李露鑫，iOS & Photography Lover，Software Engineer，Entrepreneur | 这里是 一之笔 @Yizibbi 李露鑫 的个人博客， 生活需要仪式感，💪。">
+    <meta name="keywords"  content="李露鑫, Yizibi,yizibi,一之笔的博客,一之笔,一支笔, iOS, 公司合伙人, @yizibi, @yizibi的博客, 博客, 个人网站, 互联网">
+    <meta name="theme-color" content="#000000">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="写在创业公司的那一年 - 一之笔的博客 | Yizibi Blog">
+    
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="
+  木末芙蓉花,山中发红萼——–致上海红萼信息技术有限公司,同时写给自己的总结…….
+
+
+">
+    
+    <meta property="article:published_time" content="2017-06-10T06:32:24Z">
+    
+    
+    <meta property="article:author" content="一之笔">
+    
+    
+    <meta property="article:tag" content="生活">
+    
+    
+    <meta property="og:image" content="http://localhost:4000/img/avatar-hux-ny.jpg">
+    <meta property="og:url" content="http://localhost:4000/2017/06/10/%E5%86%99%E5%9C%A8%E5%88%9B%E4%B8%9A%E5%85%AC%E5%8F%B8%E7%9A%84%E9%82%A3%E4%B8%80%E5%B9%B4/">
+    <meta property="og:site_name" content="一之笔的博客 | Yizibi Blog">
+    
+    <title>写在创业公司的那一年 - 一之笔的博客 | Yizibi Blog</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/2017/06/10/%E5%86%99%E5%9C%A8%E5%88%9B%E4%B8%9A%E5%85%AC%E5%8F%B8%E7%9A%84%E9%82%A3%E4%B8%80%E5%B9%B4/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<script type="text/javascript" color="238,205,205" opacity='0.7' zIndex="-2" count="99" src="../../../../js/canvas-nest.min.js"></script>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">一之笔</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/archive/">Archive</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/portfolio/">Portfolio</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    var __HuxNav__ = {
+        close: function(){
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        },
+        open: function(){
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+
+    // Bind Event
+    $toggle.addEventListener('click', function(e){
+        if ($navbar.className.indexOf('in') > 0) {
+            __HuxNav__.close()
+        }else{
+            __HuxNav__.open()
+        }
+    })
+
+    /**
+     * Since Fastclick is used to delegate 'touchstart' globally
+     * to hack 300ms delay in iOS by performing a fake 'click',
+     * Using 'e.stopPropagation' to stop 'touchstart' event from 
+     * $toggle/$collapse will break global delegation.
+     * 
+     * Instead, we use a 'e.target' filter to prevent handler
+     * added to document close HuxNav.  
+     *
+     * Also, we use 'click' instead of 'touchstart' as compromise
+     */
+    document.addEventListener('click', function(e){
+        if(e.target == $toggle) return;
+        if(e.target.className == 'icon-bar') return;
+        __HuxNav__.close();
+    })
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/home-bg-o.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<!-- canvas-nest.min.js -->
+<!--<script type="text/javascript" src="../../../../js/canvas-nest.min.js"></script>-->
+<head>
+    <link href="../../../../css/rouge.css" rel="stylesheet">
+</head>
+<script type="text/javascript" color="238,205,205" opacity='0.7' zIndex="-2" count="99" src="../../../../js/canvas-nest.min.js"></script>
+<!--//添加评论系统-->
+<link rel="stylesheet" href="../../../../css/gitalk.css">
+    <script src="../../../../js/gitalk.min.js"></script>
+<!--    打赏-->
+<link href="/css/reward.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/home-bg-o.jpg')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#生活" title="生活">生活</a>
+                        
+                    </div>
+                    <h1>写在创业公司的那一年</h1>
+                    
+                    
+                    <h2 class="subheading">创业不易,且行且珍惜</h2>
+                    
+                    <span class="meta">Posted by 一之笔 on June 10, 2017</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <!-- Multi-Lingual -->
+                
+
+
+				<blockquote>
+  <p>木末芙蓉花,山中发红萼——–致上海红萼信息技术有限公司,同时写给自己的总结…….</p>
+</blockquote>
+
+<h2 id="写在前面">写在前面</h2>
+
+<p>本文不针对任何人,也不针对公司,虽然团队已经解散了,但是我想说的,想分享的,仅仅是过去的一年,遇到的人和事,自己也做一些反思.</p>
+
+<h3 id="知遇">知遇</h3>
+
+<p>这个世界上,我们会遇到很多人,但是,能遇到一个懂得欣赏,负责人的人,其实是很不容易的,而我遇到的老大,就是一个有情怀,对所有人,对项目负责的,因为我们的项目是做在线教育的.教育,本身就是一个有情怀,感觉很崇高的一件事.</p>
+
+<p>时间倒退到15年10月,那时候,我从广州一路奔波到上海,在广州跟着大学同学做了大概一年的开发,基础的理论不怎么懂,即使现在,有些东西依旧不是很懂,但是,现在也正在加强自己的理论知识,都是废话.</p>
+
+<p>来到上海,赶上iOS岗位,基本市场饱和状态,那时候,找工作花了很长时间,第一次觉得,人没事干的时候,真的感觉,特别无聊,而且,还不想看书,整天想着,什么时候入职呢,什么时候面试,那时候,据说,公司一旦开放iOS岗位,每天都会有上千的简历砸过去,这个太恐怖了……其实,本质上还是自己的问题,但是,我也相信,自己总会找到适合自己的位置.</p>
+
+<p>一开始,也是在一家做教育的创业公司,呆的时间不长,短短3个月,不过还是有收获的,至少接手别人的项目,修改,包括在此基础上开发,都没有什么问题.后来,因为一些其他原因,,裸辞了……其实,我并不是一个喜欢频繁跳槽的人.接下来,又是很长的一段时间,终于,葛工给我打了一个电话,具体在哪看的简历,我也不清楚,电话里简单聊了一下,就去和顾总聊了下项目,我们都觉得OK,然后就开始做项目了,我记得很清楚,当时,公司还没成立,我们也没有正式的邮件通知,就这样,我一个人一开始就跟上海越界园区的外包公司合作开发项目了,这个外包的服务开发,真的不想吐槽~~</p>
+
+<p>人和人,相遇容易,但是,相知比较难,能遇到葛工和顾总,这样有情怀的人,自己觉得还是挺幸运的,在工作前,我就想,如果自己真的做一件产品,那就尽自己能力,把产品做好.虽然,创业者,九死一生,不过,还是可以学到东西的,即便后来,我觉得,产品没什么未来的时候,没什么希望,我也不想离职,因为,自己对产品还是有感情的,而且,我觉得,做教育,还是蛮好的.如果外包公司的项目,都拿出做产品的心态,我想,这个外包公司的口碑绝对没什么大问题的.当然,我也不是说,外包不好,肯定也有好的,但是,我没遇到~</p>
+
+<p>下面这个照片,是项目11月上线后,公司给团队定的纪念品</p>
+
+<p><img src="http://o9zpq25pv.bkt.clouddn.com/honge/WechatIMG1.jpeg" alt="" /></p>
+
+<h3 id="反思">反思</h3>
+
+<blockquote>
+  <p>永远不要在一开始,就否定一个人,有些人,时间越久,越容易知道到底是什么样的人,正如,日久见人心!</p>
+</blockquote>
+
+<p>项目进展一个月,我明显感觉有些力不从心,因为,毕竟,项目有两个端,老师和学生,而且,项目其实也不小,但是也不大,后来就招了一个人,两个人,感觉还好,感觉还好是后来的感觉.</p>
+
+<p>一开始,写项目,从代码写法规范到框架使用,感觉他都不怎么熟练,为了项目进度,也为了产品,也曾建议葛工,但是葛工说,需要对公司的每一个人负责,这一点,确实是比较好的.事实证明,也确实不错,洋仔在后来的开发中,起了非常重要的作用,因为愿意去学,也爱分享,我们关系很好,周末也去他那吃吃饭,真的,能遇到一个真心对待朋友的人,很不容易,现在,内心里,都在庆幸认识洋仔.在这里祝洋仔,事业顺利,家和万事兴!</p>
+
+<p>虽说,现在去杭州了,但是,我相信,一点都不影响他跟我的联系.当然,还有运营部的,总是自称天才的inka,对我帮助很大,爱学习,资源达人,会独立思考,她也是公司合伙人之一,现在去义乌,她说,她要赚外国人的钱,天才就是不一样,预祝天才好运!</p>
+
+<blockquote>
+  <p>永远不要忘记提升自己的软实力,意境的最高境界是:无声胜有声;功夫的最高境界是无招胜有招;</p>
+</blockquote>
+
+<p>做技术这一行,都知道,技术,日新月异,不学习,就跟不上,但凡一种新的技术,都脱离不了基础,这个基础,就是底层原理,就是计算机基础理论,我不是科班出身,心里老是有一种感觉,怎么说呢,就是感觉不太好,说白了,就是理亏,只能说明太实在,我定会在未来改变这个现状,不管在职考研也好,还是自我修炼也罢,都得提升自己;</p>
+
+<p>我们大多数人,总是感觉,每一天自己都很忙,但是都不知道每天忙什么,自己也看过一些时间管理的书,但是,一个朋友说得好:”任何书,看了没什么用,实践很重要,结合到工作生活中更有用”,真的是这样的,自己以后也需要分配好自己的时间,什么时间学习,什么时间健身,什么时间给问候家里人,什么时间陪女朋友,什么时间做什么事最高效等等.</p>
+
+<p>总之,我希望,以后的自己都会不一样,少看一些电视,少看一些综艺,其实,我以前都不看电视节目的,但是后来,觉得,生活总得有点乐趣,结果就没限制了,以后还是得节制一下.</p>
+
+<blockquote>
+  <p>如果做产品,有什么想法,就大胆提出来吧,有可能你的想法跟产品设计是相悖的.</p>
+</blockquote>
+
+<p>做程序猿或者攻城狮,都被称为”码农”,其实,在码农中,也有一些是”匠人”,比起码农,我更喜欢用”匠人”这个称呼,因为,IT项目就跟建筑一样,有框架,有底层,有界面,而真正处在一线的就是程序猿,一个好的项目,先有产品,然后设计,其次开发,最后推广,而程序猿就是产品的直接使用者,因此,程序猿对产品更要有参与感,在产品迭代开发中,如果对产品有什么看法建议,可以直接提出来,也是对产品负责,当然,也不要以技术原因为借口实现不了需求,除非真的是没办法了,但是,我想,总归是有办法的,事在人为!</p>
+
+<h2 id="最后">最后</h2>
+
+<p>一年零一个月过去了,虽然公司已经解散了,但是,我不后悔,这一年的经历,最大的收获不是什么技术成长,不是什么经历,而是认识了人生中最重要的人—–Hebe,公司解散后,我们去了云南,一起去风花雪月,探寻传说中的”女儿国”……</p>
+
+<p>从云南回来,我们去了杭州,对我来说,在哪里都一样,有爱的人的城市,整个城市,都觉得有爱!</p>
+
+<p>虽然,我们天南地北,但是,我相信,我们会有一个好结果~~~</p>
+
+
+                <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a></div>
+                <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["weixin","qzone","tsina","tqq","twi","fbook"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["weixin","qzone","tsina","tqq","twi","fbook"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+                <hr style="visibility: hidden;">
+
+            <!-- 打赏功能 -->
+            <div>
+                <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+                <div>☛兄dei，请我喝杯茶☚</div>
+                <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+                    <span>打赏</span>
+                </button>
+                <div id="QR" style="display: none;">
+                        
+                        
+                <div id="wechat" style="display: inline-block">
+                <img id="wechat_qr" src="/img/payimg/weipayimg.jpg" alt="yizibi 微信支付"/>
+                            <p>微信支付</p>
+                </div>
+                        
+                        
+                        
+                <div id="alipay" style="display: inline-block">
+                <img id="alipay_qr" src="/img/payimg/alipayimg.jpg" alt="yizibi 支付宝"/>
+                <p>支付宝</p>
+                </div>
+                        
+                        
+                        
+                        
+                </div>
+                </div>
+                
+            </div>
+            
+
+   <!--  上一篇或者下一篇post按钮 -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2017/05/15/github-SSH%E9%85%8D%E7%BD%AE%E6%9B%B4%E6%96%B0%E8%B4%A1%E7%8C%AE%E5%80%BC/" data-toggle="tooltip" data-placement="top" title="github SSH配置更新贡献值">
+                        Previous<br>
+                        <span>github SSH配置更新贡献值</span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/09/25/%E5%92%8C%E4%BD%A0%E8%81%8A%E8%81%8A%E5%8A%A0%E5%AF%86%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/" data-toggle="tooltip" data-placement="top" title="和你聊聊加密那些事儿">
+                        Next<br>
+                        <span>和你聊聊加密那些事儿</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+
+
+<!--                -->
+
+                
+                
+                <!--   gitalk       -->
+                
+            </div>  
+
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+                				<a href="/tags/#iOS技术" title="iOS技术" rel="13">
+                                    iOS技术
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#iOS问题" title="iOS问题" rel="2">
+                                    iOS问题
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#VPS" title="VPS" rel="2">
+                                    VPS
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#工具" title="工具" rel="6">
+                                    工具
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#生活" title="生活" rel="3">
+                                    生活
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#Linux" title="Linux" rel="2">
+                                    Linux
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#博客" title="博客" rel="3">
+                                    博客
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#随笔" title="随笔" rel="2">
+                                    随笔
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#摄影" title="摄影" rel="2">
+                                    摄影
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#旅行" title="旅行" rel="2">
+                                    旅行
+                                </a>
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="https://blog.searchinfogo.com">Junhua's Blog</a></li>
+                    
+                        <li><a href="http://ilongge.cn/">卟败灬筱龙</a></li>
+                    
+                        <li><a href="http://tombraiderjf.com/">Lara Croft</a></li>
+                    
+                        <li><a href="http://srsyrzz.ml/">耀日庄主的博客</a></li>
+                    
+                        <li><a href="https://leohope.com/">Hope</a></li>
+                    
+                        <li><a href="https://www.chairyfish.com/">五斤</a></li>
+                    
+                        <li><a href="https://asdfv1929.github.io/">asdfv1929</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+    
+
+    
+</article>
+
+
+<!-- Add support for Mathjax by Voleking-->
+
+
+
+
+<section class="post-comments">
+    
+    <div id="disqus_thread"></div>
+    <script>
+        
+        var disqus_config = function () {
+            this.page.url = "http://localhost:4000/2017/06/10/%E5%86%99%E5%9C%A8%E5%88%9B%E4%B8%9A%E5%85%AC%E5%8F%B8%E7%9A%84%E9%82%A3%E4%B8%80%E5%B9%B4/";
+            this.page.identifier = "/2017/06/10/%E5%86%99%E5%9C%A8%E5%88%9B%E4%B8%9A%E5%85%AC%E5%8F%B8%E7%9A%84%E9%82%A3%E4%B8%80%E5%B9%B4/";
+        };
+    
+    var disqus_shortname = 'yizibi';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+     var d = document, s = d.createElement('script');
+     s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+     s.setAttribute('data-timestamp', +new Date());
+     (d.head || d.body).appendChild(s);
+     })();
+        </script>
+    <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
+    
+    
+    
+    
+    
+</section>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<!--
+Author: Ray-Eldath
+refer to:
+ - https://github.com/theme-next/hexo-theme-next/blob/master/source/js/src/utils.js
+ - https://jingyan.baidu.com/article/b2c186c83ec846c46ef6ff80.html
+ - http://www.bkjia.com/jQuery/449205.html
+-->
+<style media="screen">
+  .scroll {
+    z-index: 10000;
+    display: none;
+    height: 24px;
+    background: #222;
+    color: #fff;
+    line-height: 24px;
+    text-align: center;
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+</style>
+<div class="scroll">
+  <i class="fa fa-arrow-up" style="margin-left: 4px"></i>
+  <span class="scrollpercent" style="margin-left: -2px"></span>
+  <span style="margin-left: -4px; margin-right: 4px">%</span>
+</div>
+
+<script src="/js/util.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    if (utils.isMobile()) {
+      $('.scroll').hide();
+      return;
+    }
+    $(window).scroll(function() {
+      let scrollValue = $(window).scrollTop();
+      var scrollPercentRounded = Math.round((scrollValue / utils.getContentVisibilityHeight()) * 100);
+      var scrollPercentMaxed = (scrollPercentRounded > 100) ? 100 : scrollPercentRounded;
+      $('.scrollpercent').html(scrollPercentMaxed);
+      scrollValue > 100 ? $('.scroll').fadeIn() : $('.scroll').fadeOut();
+    });
+    $('.scroll').click(function() {
+      $('html, body').animate({
+        scrollTop: 0
+      }, 300);
+    })
+  })
+</script>
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://twitter.com/yizibi">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/li-lin-fei">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a target="_blank" href="http://weibo.com/2524618644">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+
+                    
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/yizibbi">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/yizibi">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/露鑫-李-525b58111">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">
+<!--                  本站总访问量<span id="busuanzi_value_site_pv"></span>次，本站访客数<span id="busuanzi_value_site_uv"></span>人次，本文总阅读量<span id="busuanzi_value_page_pv"></span>次-->
+                    <span class="site-uv" title="总点击人数">
+                    <img src="/img/vendor/octicons/svg/person.svg" width="10" height="16">
+                    <span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
+                    <span class="site-pv" title="总点击量">
+                    <img src="/img/vendor/octicons/svg/eye.svg" width="16" height="16">
+                    <span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
+                    <span class="page-pv"title="本页面点击人数">
+                    <img src="/img/vendor/octicons/svg/file-text.svg" width="12" height="16">
+                    <span class="busuanzi-value" id="busuanzi_value_page_pv"></span></span>
+                    <br>
+                    Copyright &copy; 一之笔 2018
+                    <br>
+                    Theme by <a href="https://github.com/Huxpro/huxpro.github.io">Hux</a> | 本站源码 <a href="https://github.com/yizibi/yizibi.github.io">yizibi</a>
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=yizibi&repo=yizibi.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+            
+        </div>
+    </div>
+</footer>
+<!--网站统计-->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+<!-- Service Worker -->
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async('/js/jquery.tagcloud.js',function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-124793396-1';
+    var _gaDomain = 'auto';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+<!-- Side Catalog -->
+
+
+
+<!-- Multi-Lingual -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+<script src="/js/jquery.min.js"></script>
+<style>
+.videoWrapper {
+	position: relative;
+	padding-bottom: 56.333%;
+	height: 0;
+    background: black;
+}
+.videoWrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+    border: 0;
+}    
+</style>
+
+<script>
+function get_youtube_id(url) {
+    var p = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+    return (url.match(p)) ? RegExp.$1 : false;
+}
+function vimeo_embed(url,el) {
+    var id = false;
+    $.ajax({
+      url: 'https://vimeo.com/api/oembed.json?url='+url,
+      async: true,
+      success: function(response) {
+        if(response.video_id) {
+          id = response.video_id;
+          if(url.indexOf('autoplay=1') !== -1) var autoplay=1; else var autoplay=0;
+          if(url.indexOf('loop=1') !== -1) var loop=1; else var loop=0;
+          var theInnerHTML = '<div class="videoWrapper"><iframe src="https://player.vimeo.com/video/'+id+'/?byline=0&title=0&portrait=0';
+          if(autoplay==1) theInnerHTML += '&autoplay=1';
+          if(loop==1) theInnerHTML += '&loop=1';
+          theInnerHTML += '" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>'; 
+          el.innerHTML = theInnerHTML;
+        }
+      }
+    });
+}
+function video_embed() {
+    var p = document.getElementsByTagName('p');
+    for(var i = 0; i < p.length; i++) {
+        //check if this is an external url (that starts with https:// or http://
+        if (p[i].innerHTML.indexOf("http://") == 0 ||
+            p[i].innerHTML.indexOf("https://") == 0) {
+            var youtube_id = get_youtube_id(p[i].innerHTML);
+            if(youtube_id) {
+                if(p[i].innerHTML.indexOf('autoplay=1') !== -1) var autoplay=1; else var autoplay=0;
+                if(p[i].innerHTML.indexOf('loop=1') !== -1) var loop=1; else var loop=0;
+                var theInnerHTML = '<div class="videoWrapper"><iframe width="720" height="420" src="https://www.youtube.com/embed/' + youtube_id + '?rel=0&showinfo=0';
+                if(autoplay==1) theInnerHTML += '&autoplay=1';
+                if(loop==1) theInnerHTML += '&loop=1&playlist='+youtube_id+'&version=3';
+                theInnerHTML += '" frameborder="0" allowfullscreen></iframe></div>';
+                p[i].innerHTML = theInnerHTML;
+            }
+            if(p[i].innerHTML.indexOf('vimeo.com') !== -1) {
+                //ask vimeo for the id and place the embed
+                vimeo_embed(p[i].innerHTML,p[i]);
+            }
+        }
+    }
+}
+video_embed();
+
+function mp3_embed() {
+    var p = document.getElementsByTagName('p');
+    for(var i = 0; i < p.length; i++) {
+        if(p[i].innerHTML.indexOf('.mp3') !== -1) {
+            var str = p[i].innerHTML.split('?');
+            if(str.length == 1) str[1] = '';
+            var str1 = str[1];
+            str1 = str1.replace('&','').replace('&','');
+            str1 = str1.replace('autoplay=1','').replace('autoplay=0','');
+            str1 = str1.replace('loop=1','').replace('loop=0','');
+            str1 = str1.replace('controls=0','').replace('controls=1','');
+
+            if (str[0].lastIndexOf('.mp3', str[0].length - 4) === str[0].length - 4 && str1.length == 0) {
+                if(str[1].indexOf('autoplay=1') !== -1) var autoplay=1; else var autoplay=0;
+                if(str[1].indexOf('loop=1') !== -1) var loop=1; else var loop=0;
+                if(str[1].indexOf('controls=0') !== -1) var controls=0; else var controls=1;
+                var newInnerHTML = '<audio';
+                if(autoplay==1) newInnerHTML += ' autoplay';
+                if(loop==1) newInnerHTML += ' loop';
+                if(controls==1) newInnerHTML += ' controls';
+                newInnerHTML += '><source src="'+str[0]+'" type="audio/mpeg">Your browser does not support the audio element.</audio>';
+                p[i].innerHTML = newInnerHTML;
+            }
+        }
+    }
+}
+mp3_embed();
+</script>
+
+<!--鼠标点击爱心动画-->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+</body>
+
+</html>
