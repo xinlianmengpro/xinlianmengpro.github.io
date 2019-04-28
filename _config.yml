@@ -118,3 +118,5 @@ friends: [
 	href: "https://yizibi.github.io"
     }
 ]
+
+theme: jekyll-theme-cayman
