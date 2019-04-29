@@ -4,7 +4,7 @@ SEOTitle: 鑫联盟 | 鑫联盟Pro
 header-img: img/home-bg.jpg
 email: liluxinios@gmail.com
 description: "随行付鑫联盟是基于互联网分享精神，以支付产品为载体而实现全民创业。在该联盟的盟友将享有鑫联盟推出的稳定,公平,透明的政策和长期收益."
-keyword: "鑫管家，xinguanjia，xinlianmeng,xinlianmengpro,suixingfu,随行付，鑫联盟3.0,随行付鑫联盟,mpos,鑫联盟创业,鑫联盟注册,鑫联盟3.0,鑫联盟pro,随行付MPOS"
+keyword: "鑫管家，鑫联盟3.0,随行付鑫联盟,mpos,鑫联盟创业,鑫联盟注册,鑫联盟3.0,xinguanjia，xinlianmeng,xinlianmengpro,suixingfu,随行付，鑫联盟pro,随行付MPOS"
 url: "https://xinlianmengpro.github.io/"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 
@@ -14,7 +14,7 @@ future: true
 # SNS settings
 RSS: true
 #weibo_username:     2524618644
-#zhihu_username:     li-lin-fei
+zhihu_username:     li-lin-fei
 #github_username:    yizibi
 #linkedin_username:  露鑫-李-525b58111
 #twitter_username:   yizibi
@@ -69,12 +69,12 @@ kramdown:
 netease_comment: false
 
 gitalk:
-  # enable: true
-   #owner: xinlianmengpro
-   #repo: xinlianmengpro.github.io
-   #clientID: 3e12c08c2ec52afbcb30
-   #clientSecret: c2a74d279e7b42cf782a1d2d1b5a410d27c5ab57
-  # admin: xinlianmengpro
+   enable: true
+   owner: xinlianmengpro
+   repo: xinlianmengpro.github.io
+   clientID: c5c4b73f16f106c6c85f
+   clientSecret: 69978426b1467b22d17adde8d3e3af7a04a9e3f2
+   admin: xinlianmengpro
 
 
 # Analytics settings
