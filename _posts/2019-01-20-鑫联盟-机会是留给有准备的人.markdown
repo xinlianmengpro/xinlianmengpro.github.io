@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:    "鑫联盟-机会是留给有准备的人"
-subtitle:   "展业大咖分享对"准备"认知"
+subtitle:   "展业大咖分享对准备的认知"
 date: 2019-01-20 10:01:24.000000000 +09:00
 author:     "鑫联盟Pro"
 header-img: "img/post_190120.jpg"
